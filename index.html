@@ -88,31 +88,39 @@
             </div>
         </div>
         <textarea style="position:relative;overflow:hidden;background-color: #000;margin-top:10px;color:#FFF;width:200px;" id="player_list" name="Player List" placeholder="Insert Player List Here"></textarea>
-        <button style="position:relative;background-color: #000;color:#FFF;margin-top:10px;" onclick="import_players()">Import Players</button>
+        <button style="position:relative;background-color: #000;color:#FFF;margin-top:10px;" onclick="import_players()">Import Players</button>        <button style="position:relative;background-color: #000;color:#FFF;margin-top:10px;" onclick="reset()">Reset</button>
         <div style="position:absolute;margin-top:-570px;text-align:center;font-size:50px;font-family:'Permanent Marker';color:orange;text-shadow:0px 0px 4px red;">VS</div>
         <div style="position:absolute;margin-top:-590px;margin-left:-500px;text-align:center;font-size:50px;font-family:'Permanent Marker';color:orange;text-shadow:0px 0px 4px red;">Team One</div>
         <div style="position:absolute;margin-top:-590px;margin-left:500px;text-align:center;font-size:50px;font-family:'Permanent Marker';color:orange;text-shadow:0px 0px 4px red;">Team Two</div>
-
-        <div style="position:absolute;bottom:10px;color:grey;font-family:'';font-size:15px">
+        <div style="position:relative;width:300px;height:30px;border:1px solid #FFF;margin-top:10px;background: rgb(0,255,19);
+        background: linear-gradient(90deg, rgba(0,255,19,1) 10%, rgba(255,181,0,1) 30%, rgba(255,181,0,1) 40%, rgba(255,0,0,1) 60%, rgba(173,0,0,1) 92%);">
+            <div id="strictness_meter" style="position:absolute;top:0px;width:0px;height:100%;border-right:3px solid #000;transition:all 0.5s;"></div>
+            <div style="position:absolute;top:-18px;font-family:'Staatliches';color:#FFF;">Balance Meter</div>
+            <div id="matchup_counter" style="position:absolute;right:0px;bottom:-18px;font-family:'Staatliches';color:#FFF;"></div>
+        </div>
+        <div style="position:absolute;left:10px;bottom:10px;color:grey;font-family:'';font-size:15px;pointer-events:none;">
             <b>How to create player list.</b><br>
             1) One player per line. <br>
             2) Do not include any spaces in the player name. <br>
-            3) Ranks are formatted like so: Bronze 1 = B1, Gold 1 = G1, etc... (Do not include LP for higher ranks: Masters = M, GrandMasters = GM, Challenger = C) <br>
+            3) Ranks are formatted like so: Bronze 1 = B1, Gold 1 = G1, etc... <br> (Do not include LP for higher ranks: Masters = M, GrandMasters = GM, Challenger = C) <br>
             4) Main-Role and Off-Role are formatted like so: Top = TOP, Jungle = JNG, Mid = MID, Adc = ADC, Support = SUP. <br> <br>
             Example Formatting (Case Sensitive!): <br>
             Player1 G3 TOP MID <br>
             Player2 S2 JNG ADC <br>
-            etc...
+            etc... <br> <br>
+
+            <b>Known Bugs:</b>
+            If balance meter moves but no teams are displayed simply click import again.
         </div>
 
-        <div style="position:absolute;top:10px;color:grey;font-family:'';font-size:15px">
+        <div style="position:absolute;left:10px;top:10px;color:grey;font-family:'';font-size:15px;pointer-events:none;">
             <b>League of Legends Custom Game Balancer Tool</b><br>
-            v0.1 Beta <br>
+            v0.2 Beta <br>
             Made by: Burrito Knight(NA)<br><br>
             How to use:<br>
             1) Enter Player List (Minimum 10 Players)<br>
-            2) Spam Import Players Button (Just a few times)<br>
-            3) Enjoy your generated matchup! (If nothing shows up the player skill difference is too high to balance!)<br>
+            2) Click Import Players Button (Allow for a few seconds for the matchup to load.)<br>
+            3) Enjoy your generated matchup! (If nothing shows up the player skill difference is too high to balance!)<br> <br>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>
@@ -124,12 +132,14 @@
             var team_one_score = [];
             var team_two_score = [];
             var team_catalog = [];
-            var balance_scores = [];
             let closest = 0;
-            var strictness = 30;
+            var balance_scores = [];
+            var strictness = 1;
+            var matchup_generated = 0;
             function import_players(){
+                $('#strictness_meter').css({'width':strictness + '%'});
                 var players = $('#player_list').val().split('\n');
-                for (let i = 0; i < (players.length*20); i++) {
+                for (let i = 0; i < (players.length*100); i++) {
                     shuffle(players);
                     for (let i = 0; i < players.length; i++) {
                         player[i] = players[i].split(" ");
@@ -166,86 +176,106 @@
                         if ((player[i][2] == "TOP") && (team_one[0] == "TOP")){team_one[0] = (player[i])}
                         else if ((player[i][2] == "TOP") && (team_two[0] == "TOP") && (((player[i][4]) - (team_one[0][4]) > -strictness) && ((player[i][4]) - (team_one[0][4]) < strictness))){team_two[0] = (player[i])} 
                         else if ((player[i][2] == "JNG") && (team_one[1] == "JNG")){team_one[1] = (player[i])}
-                        else if ((player[i][2] == "JNG") && (team_two[1] == "JNG") && (((player[i][4]) - (team_one[0][4]) > -strictness) && ((player[i][4]) - (team_one[0][4]) < strictness))){team_two[1] = (player[i])}
+                        else if ((player[i][2] == "JNG") && (team_two[1] == "JNG") && (((player[i][4]) - (team_one[1][4]) > -strictness) && ((player[i][4]) - (team_one[0][4]) < strictness))){team_two[1] = (player[i])}
                         else if ((player[i][2] == "MID") && (team_one[2] == "MID")){team_one[2] = (player[i])}
-                        else if ((player[i][2] == "MID") && (team_two[2] == "MID") && (((player[i][4]) - (team_one[0][4]) > -strictness) && ((player[i][4]) - (team_one[0][4]) < strictness))){team_two[2] = (player[i])}
+                        else if ((player[i][2] == "MID") && (team_two[2] == "MID") && (((player[i][4]) - (team_one[2][4]) > -strictness) && ((player[i][4]) - (team_one[0][4]) < strictness))){team_two[2] = (player[i])}
                         else if ((player[i][2] == "ADC") && (team_one[3] == "ADC")){team_one[3] = (player[i])}
-                        else if ((player[i][2] == "ADC") && (team_two[3] == "ADC") && (((player[i][4]) - (team_one[0][4]) > -strictness) && ((player[i][4]) - (team_one[0][4]) < strictness))){team_two[3] = (player[i])}
+                        else if ((player[i][2] == "ADC") && (team_two[3] == "ADC") && (((player[i][4]) - (team_one[3][4]) > -strictness) && ((player[i][4]) - (team_one[0][4]) < strictness))){team_two[3] = (player[i])}
                         else if ((player[i][2] == "SUP") && (team_one[4] == "SUP")){team_one[4] = (player[i])}
-                        else if ((player[i][2] == "SUP") && (team_two[4] == "SUP") && (((player[i][4]) - (team_one[0][4]) > -strictness) && ((player[i][4]) - (team_one[0][4]) < strictness))){team_two[4] = (player[i])}
+                        else if ((player[i][2] == "SUP") && (team_two[4] == "SUP") && (((player[i][4]) - (team_one[4][4]) > -strictness) && ((player[i][4]) - (team_one[0][4]) < strictness))){team_two[4] = (player[i])}
 
                         else if ((player[i][3] == "TOP") && (team_one[0] == "TOP")){player[i][4] = (player[i][4]) - (player[i][4] * 0.2), team_one[0] = (player[i])}
                         else if ((player[i][3] == "TOP") && (team_two[0] == "TOP") && (((player[i][4]) - (team_one[0][4]) > -strictness) && ((player[i][4]) - (team_one[0][4]) < strictness))){player[i][4] = (player[i][4]) - (player[i][4] * 0.2), team_two[0] = (player[i])} 
                         else if ((player[i][3] == "JNG") && (team_one[1] == "JNG")){player[i][4] = (player[i][4]) - (player[i][4] * 0.2), team_one[1] = (player[i])}
-                        else if ((player[i][3] == "JNG") && (team_two[1] == "JNG") && (((player[i][4]) - (team_one[0][4]) > -strictness) && ((player[i][4]) - (team_one[0][4]) < strictness))){player[i][4] = (player[i][4]) - (player[i][4] * 0.2), team_two[1] = (player[i])}
+                        else if ((player[i][3] == "JNG") && (team_two[1] == "JNG") && (((player[i][4]) - (team_one[1][4]) > -strictness) && ((player[i][4]) - (team_one[1][4]) < strictness))){player[i][4] = (player[i][4]) - (player[i][4] * 0.2), team_two[1] = (player[i])}
                         else if ((player[i][3] == "MID") && (team_one[2] == "MID")){player[i][4] = (player[i][4]) - (player[i][4] * 0.2), team_one[2] = (player[i])}
-                        else if ((player[i][3] == "MID") && (team_two[2] == "MID") && (((player[i][4]) - (team_one[0][4]) > -strictness) && ((player[i][4]) - (team_one[0][4]) < strictness))){player[i][4] = (player[i][4]) - (player[i][4] * 0.2), team_two[2] = (player[i])}
+                        else if ((player[i][3] == "MID") && (team_two[2] == "MID") && (((player[i][4]) - (team_one[2][4]) > -strictness) && ((player[i][4]) - (team_one[2][4]) < strictness))){player[i][4] = (player[i][4]) - (player[i][4] * 0.2), team_two[2] = (player[i])}
                         else if ((player[i][3] == "ADC") && (team_one[3] == "ADC")){player[i][4] = (player[i][4]) - (player[i][4] * 0.2), team_one[3] = (player[i])}
-                        else if ((player[i][3] == "ADC") && (team_two[3] == "ADC") && (((player[i][4]) - (team_one[0][4]) > -strictness) && ((player[i][4]) - (team_one[0][4]) < strictness))){player[i][4] = (player[i][4]) - (player[i][4] * 0.2), team_two[3] = (player[i])}
+                        else if ((player[i][3] == "ADC") && (team_two[3] == "ADC") && (((player[i][4]) - (team_one[3][4]) > -strictness) && ((player[i][4]) - (team_one[3][4]) < strictness))){player[i][4] = (player[i][4]) - (player[i][4] * 0.2), team_two[3] = (player[i])}
                         else if ((player[i][3] == "SUP") && (team_one[4] == "SUP")){player[i][4] = (player[i][4]) - (player[i][4] * 0.2), team_one[4] = (player[i])}
-                        else if ((player[i][3] == "SUP") && (team_two[4] == "SUP") && (((player[i][4]) - (team_one[0][4]) > -strictness) && ((player[i][4]) - (team_one[0][4]) < strictness))){player[i][4] = (player[i][4]) - (player[i][4] * 0.2), team_two[4] = (player[i])}
+                        else if ((player[i][3] == "SUP") && (team_two[4] == "SUP") && (((player[i][4]) - (team_one[4][4]) > -strictness) && ((player[i][4]) - (team_one[4][4]) < strictness))){player[i][4] = (player[i][4]) - (player[i][4] * 0.2), team_two[4] = (player[i])}
+                        
+                        else if ((player[i][2] != "SUP") && (player[i][3] != "SUP") && (team_one[0] == "SUP")){player[i][4] = (player[i][4]) - (player[i][4] * 0.5), team_one[4] = (player[i])}
+                        else if ((player[i][2] != "SUP") && (player[i][3] != "SUP") && (team_two[0] == "SUP") && (((player[i][4]) - (player[i][4] * 0.5)) - (team_one[4][4]) > -strictness) && (((player[i][4]) - (player[i][4] * 0.5)) - (team_one[4][4]) < strictness)){player[i][4] = (player[i][4]) - (player[i][4] * 0.5), team_two[4] = (player[i])}
+                        else if ((player[i][2] != "JNG") && (player[i][3] != "JNG") && (team_one[0] == "JNG")){player[i][4] = (player[i][4]) - (player[i][4] * 0.5), team_one[1] = (player[i])}
+                        else if ((player[i][2] != "JNG") && (player[i][3] != "JNG") && (team_two[0] == "JNG") && (((player[i][4]) - (player[i][4] * 0.5)) - (team_one[1][4]) > -strictness) && (((player[i][4]) - (player[i][4] * 0.5)) - (team_one[1][4]) < strictness)){player[i][4] = (player[i][4]) - (player[i][4] * 0.5), team_two[1] = (player[i])}
+                        else if ((player[i][2] != "TOP") && (player[i][3] != "TOP") && (team_one[0] == "TOP")){player[i][4] = (player[i][4]) - (player[i][4] * 0.5), team_one[0] = (player[i])}
+                        else if ((player[i][2] != "TOP") && (player[i][3] != "TOP") && (team_two[0] == "TOP") && (((player[i][4]) - (player[i][4] * 0.5)) - (team_one[0][4]) > -strictness) && (((player[i][4]) - (player[i][4] * 0.5)) - (team_one[0][4]) < strictness)){player[i][4] = (player[i][4]) - (player[i][4] * 0.5), team_two[0] = (player[i])}
+                        else if ((player[i][2] != "MID") && (player[i][3] != "MID") && (team_one[0] == "MID")){player[i][4] = (player[i][4]) - (player[i][4] * 0.5), team_one[2] = (player[i])}
+                        else if ((player[i][2] != "MID") && (player[i][3] != "MID") && (team_two[0] == "MID") && (((player[i][4]) - (player[i][4] * 0.5)) - (team_one[2][4]) > -strictness) && (((player[i][4]) - (player[i][4] * 0.5)) - (team_one[2][4]) < strictness)){player[i][4] = (player[i][4]) - (player[i][4] * 0.5), team_two[2] = (player[i])}
+                        else if ((player[i][2] != "ADC") && (player[i][3] != "ADC") && (team_one[0] == "ADC")){player[i][4] = (player[i][4]) - (player[i][4] * 0.5), team_one[3] = (player[i])}
+                        else if ((player[i][2] != "ADC") && (player[i][3] != "ADC") && (team_two[0] == "ADC") && (((player[i][4]) - (player[i][4] * 0.5)) - (team_one[3][4]) > -strictness) && (((player[i][4]) - (player[i][4] * 0.5)) - (team_one[3][4]) < strictness)){player[i][4] = (player[i][4]) - (player[i][4] * 0.5), team_two[3] = (player[i])}
+  
                         else{};
                     }
-                    team_one_score = (parseInt(team_one[0][4])) + (parseInt(team_one[1][4])) + (parseInt(team_one[2][4])) + (parseInt(team_one[3][4])) + (parseInt(team_one[4][4]));
-                    team_two_score = (parseInt(team_two[0][4])) + (parseInt(team_two[1][4])) + (parseInt(team_two[2][4])) + (parseInt(team_two[3][4])) + (parseInt(team_two[4][4]));
-                    team_catalog.push ([(team_one_score - team_two_score), team_one, team_two]);
-                    balance_scores.push ((Math.abs((parseInt(team_one[0][4])) - (parseInt(team_two[0][4]))) + Math.abs((parseInt(team_one[1][4])) - (parseInt(team_two[1][4]))) + Math.abs((parseInt(team_one[2][4])) - (parseInt(team_two[2][4]))) + Math.abs((parseInt(team_one[3][4])) - (parseInt(team_two[3][4]))) + Math.abs((parseInt(team_one[4][4])) - (parseInt(team_two[4][4])))));
+                    matchup_generated++;
+                    $('#matchup_counter').html(matchup_generated + " Potential Teams Generated!");
+                    if(((Math.abs((parseInt(team_one[0][4])) - (parseInt(team_two[0][4]))) + Math.abs((parseInt(team_one[1][4])) - (parseInt(team_two[1][4]))) + Math.abs((parseInt(team_one[2][4])) - (parseInt(team_two[2][4]))) + Math.abs((parseInt(team_one[3][4])) - (parseInt(team_two[3][4]))) + Math.abs((parseInt(team_one[4][4])) - (parseInt(team_two[4][4]))))) >= 0){
+                    team_catalog.push ([((Math.abs((parseInt(team_one[0][4])) - (parseInt(team_two[0][4]))) + Math.abs((parseInt(team_one[1][4])) - (parseInt(team_two[1][4]))) + Math.abs((parseInt(team_one[2][4])) - (parseInt(team_two[2][4]))) + Math.abs((parseInt(team_one[3][4])) - (parseInt(team_two[3][4]))) + Math.abs((parseInt(team_one[4][4])) - (parseInt(team_two[4][4]))))), team_one, team_two]);
+                    } else {}
                     player = [];
                     player_score = [];
                     team_one = ["TOP", "JNG", "MID", "ADC", "SUP"];
                     team_two = ["TOP", "JNG", "MID", "ADC", "SUP"];
                     team_one_score = [];
                     team_two_score = [];
-                    console.log(i + "Team Comp Generated");
-                }
-                closestToZero(balance_scores);
 
-                function closestToZero(numbers) {                    
-                    for (let i = 0; i < numbers.length ; i++) {
+                }
+                closestToZero();
+                function closestToZero() {                    
+                    for (let i = 0; i < team_catalog.length ; i++) {
                         if (closest === 0) {
-                            closest = numbers[i];
-                        } else if (numbers[i] > 0 && numbers[i] <= Math.abs(closest)) {
-                            closest = numbers[i];
+                            closest = team_catalog[i][0];
+                        } else if (team_catalog[i][0] > 0 && team_catalog[i][0] <= Math.abs(closest)) {
+                            closest = team_catalog[i];
                         }
-                        console.log(closest);
                     }
+                    
+                    if (closest != 0){
+                    $('#t1_top_name').html((closest[1][0][0]));
+                    $('#t1_top_rank').html((closest[1][0][1]));
+                    $('#t1_top_roles').html((closest[1][0][2]) + ", " + (closest[1][0][3]) + " " + (closest[1][0][4]));
+                    $('#t2_top_name').html((closest[2][0][0]));
+                    $('#t2_top_rank').html((closest[2][0][1]));
+                    $('#t2_top_roles').html((closest[2][0][2]) + ", " + (closest[2][0][3]) + " " + (closest[2][0][4]));
 
-                    $('#t1_top_name').html((team_catalog[numbers.indexOf(closest)][1][0][0]));
-                    $('#t1_top_rank').html((team_catalog[numbers.indexOf(closest)][1][0][1]));
-                    $('#t1_top_roles').html((team_catalog[numbers.indexOf(closest)][1][0][2]) + ", " + (team_catalog[numbers.indexOf(closest)][1][0][3]) + " " + (team_catalog[numbers.indexOf(closest)][1][0][4]));
-                    $('#t2_top_name').html((team_catalog[numbers.indexOf(closest)][2][0][0]));
-                    $('#t2_top_rank').html((team_catalog[numbers.indexOf(closest)][2][0][1]));
-                    $('#t2_top_roles').html((team_catalog[numbers.indexOf(closest)][2][0][2]) + ", " + (team_catalog[numbers.indexOf(closest)][2][0][3]) + " " + (team_catalog[numbers.indexOf(closest)][2][0][4]));
+                    $('#t1_jng_name').html((closest[1][1][0]));
+                    $('#t1_jng_rank').html((closest[1][1][1]));
+                    $('#t1_jng_roles').html((closest[1][1][2]) + ", " + (closest[1][1][3]) + " " + (closest[1][1][4]));
+                    $('#t2_jng_name').html((closest[2][1][0]));
+                    $('#t2_jng_rank').html((closest[2][1][1]));
+                    $('#t2_jng_roles').html((closest[2][1][2]) + ", " + (closest[2][1][3]) + " " + (closest[2][1][4]));
 
-                    $('#t1_jng_name').html((team_catalog[numbers.indexOf(closest)][1][1][0]));
-                    $('#t1_jng_rank').html((team_catalog[numbers.indexOf(closest)][1][1][1]));
-                    $('#t1_jng_roles').html((team_catalog[numbers.indexOf(closest)][1][1][2]) + ", " + (team_catalog[numbers.indexOf(closest)][1][1][3]) + " " + (team_catalog[numbers.indexOf(closest)][1][1][4]));
-                    $('#t2_jng_name').html((team_catalog[numbers.indexOf(closest)][2][1][0]));
-                    $('#t2_jng_rank').html((team_catalog[numbers.indexOf(closest)][2][1][1]));
-                    $('#t2_jng_roles').html((team_catalog[numbers.indexOf(closest)][2][1][2]) + ", " + (team_catalog[numbers.indexOf(closest)][2][1][3]) + " " + (team_catalog[numbers.indexOf(closest)][2][1][4]));
+                    $('#t1_mid_name').html((closest[1][2][0]));
+                    $('#t1_mid_rank').html((closest[1][2][1]));
+                    $('#t1_mid_roles').html((closest[1][2][2]) + ", " + (closest[1][2][3]) + " " + (closest[1][2][4]));
+                    $('#t2_mid_name').html((closest[2][2][0]));
+                    $('#t2_mid_rank').html((closest[2][2][1]));
+                    $('#t2_mid_roles').html((closest[2][2][2]) + ", " + (closest[2][2][3]) + " " + (closest[2][2][4]));
 
-                    $('#t1_mid_name').html((team_catalog[numbers.indexOf(closest)][1][2][0]));
-                    $('#t1_mid_rank').html((team_catalog[numbers.indexOf(closest)][1][2][1]));
-                    $('#t1_mid_roles').html((team_catalog[numbers.indexOf(closest)][1][2][2]) + ", " + (team_catalog[numbers.indexOf(closest)][1][2][3]) + " " + (team_catalog[numbers.indexOf(closest)][1][2][4]));
-                    $('#t2_mid_name').html((team_catalog[numbers.indexOf(closest)][2][2][0]));
-                    $('#t2_mid_rank').html((team_catalog[numbers.indexOf(closest)][2][2][1]));
-                    $('#t2_mid_roles').html((team_catalog[numbers.indexOf(closest)][2][2][2]) + ", " + (team_catalog[numbers.indexOf(closest)][2][2][3]) + " " + (team_catalog[numbers.indexOf(closest)][2][2][4]));
+                    $('#t1_adc_name').html((closest[1][3][0]));
+                    $('#t1_adc_rank').html((closest[1][3][1]));
+                    $('#t1_adc_roles').html((closest[1][3][2]) + ", " + (closest[1][3][3]) + " " + (closest[1][3][4]));
+                    $('#t2_adc_name').html((closest[2][3][0]));
+                    $('#t2_adc_rank').html((closest[2][3][1]));
+                    $('#t2_adc_roles').html((closest[2][3][2]) + ", " + (closest[2][3][3]) + " " + (closest[2][3][4]));
 
-                    $('#t1_adc_name').html((team_catalog[numbers.indexOf(closest)][1][3][0]));
-                    $('#t1_adc_rank').html((team_catalog[numbers.indexOf(closest)][1][3][1]));
-                    $('#t1_adc_roles').html((team_catalog[numbers.indexOf(closest)][1][3][2]) + ", " + (team_catalog[numbers.indexOf(closest)][1][3][3]) + " " + (team_catalog[numbers.indexOf(closest)][1][3][4]));
-                    $('#t2_adc_name').html((team_catalog[numbers.indexOf(closest)][2][3][0]));
-                    $('#t2_adc_rank').html((team_catalog[numbers.indexOf(closest)][2][3][1]));
-                    $('#t2_adc_roles').html((team_catalog[numbers.indexOf(closest)][2][3][2]) + ", " + (team_catalog[numbers.indexOf(closest)][2][3][3]) + " " + (team_catalog[numbers.indexOf(closest)][2][3][4]));
+                    $('#t1_sup_name').html((closest[1][4][0]));
+                    $('#t1_sup_rank').html((closest[1][4][1]));
+                    $('#t1_sup_roles').html((closest[1][4][2]) + ", " + (closest[1][4][3]) + " " + (closest[1][4][4]));
+                    $('#t2_sup_name').html((closest[2][4][0]));
+                    $('#t2_sup_rank').html((closest[2][4][1]));
+                    $('#t2_sup_roles').html((closest[2][4][2]) + ", " + (closest[2][4][3]) + " " + (closest[2][4][4]));
+                }else{}
 
-                    $('#t1_sup_name').html((team_catalog[numbers.indexOf(closest)][1][4][0]));
-                    $('#t1_sup_rank').html((team_catalog[numbers.indexOf(closest)][1][4][1]));
-                    $('#t1_sup_roles').html((team_catalog[numbers.indexOf(closest)][1][4][2]) + ", " + (team_catalog[numbers.indexOf(closest)][1][4][3]) + " " + (team_catalog[numbers.indexOf(closest)][1][4][4]));
-                    $('#t2_sup_name').html((team_catalog[numbers.indexOf(closest)][2][4][0]));
-                    $('#t2_sup_rank').html((team_catalog[numbers.indexOf(closest)][2][4][1]));
-                    $('#t2_sup_roles').html((team_catalog[numbers.indexOf(closest)][2][4][2]) + ", " + (team_catalog[numbers.indexOf(closest)][2][4][3]) + " " + (team_catalog[numbers.indexOf(closest)][2][4][4]));
+
                 }
-            }   
+                if (team_catalog.length === 0){
+                    strictness++;
+                    import_players_refresh();
+                    import_players();
+                }
+            }  
             function shuffle(a){for(var j,i=a.length-1;i>0;i--){j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}}
 
             function import_players_refresh(){
@@ -259,9 +289,12 @@
                 team_catalog = [];
                 balance_scores = [];
                 closest = 0;
-                strictness = 50;
                 team_catalog = [];
                 import_players();
+            }
+
+            function reset(){
+                window.reload();
             }
         </script>
     </body>
