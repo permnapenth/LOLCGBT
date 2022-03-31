@@ -1,178 +1,813 @@
-
 <html>
+    <head>
+        <title>
+            CUSTOM GAMMMMMMMEEEESSSS
+        </title>
+    </head>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Staatliches&display=swap');
         body{
             display:flex;
-            align-items:center;
             justify-content:center;
-            flex-direction: column;
+            align-items:center;
+            align-content:center;
+            overflow:hidden;
+            margin:0px;
+            height:100%;
+            width:100%;
             background-color:#000;
+        }
+        big{
+            color:red;
+        }
+        a{
+            text-decoration: none;
+            color:red;
+        }
+        #add_player_button{
+            background-color:#000;
+            color:orange;
+            box-shadow:0px 10px 2px #000;
+            border:2px solid orange;
+            transition:all 0.1s;
+            bottom:25px;
+        }
+        #add_player_button:active{
+            background-color:#000;
+            color:orange;
+            box-shadow:0px 0px 1px #000;
+            bottom:15px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 9px;
+            height: 9px;
+
+        }
+
+        ::-webkit-scrollbar-button {
+            width: 0px;
+            height: 0px;    
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: orange;
+            border: 0px none #ffffff;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: orange;
+        }
+
+        ::-webkit-scrollbar-thumb:active {
+            background: orange;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000000;
+            border: 0px none #ffffff;
+            border-radius: 0px;
+        }
+
+        ::-webkit-scrollbar-track:hover {
+            background: #000;
+        }
+
+        ::-webkit-scrollbar-track:active {
+            background: #000;
+        }
+
+        ::-webkit-scrollbar-corner {
+            background: transparent;
         }
 
         .player{
-            position:relative;
-            width:40%;
-            height:18%;
-            border:2px solid blue;
-            margin:2px;
+            position:absolute;
+            width:45%;
+            height:100px;
+            background-color: orange;
+            margin:10px;
             text-align: center;
-            color:#FFF;
+            color:#000;
             font-family:'Staatliches';
             display:flex;
             align-items:center;
             justify-content:center;
         }
+
     </style>
     <body>
-        <div id="matchup_display" style="position:relative;margin-top:200px;height:500px;width:800px;pointer-events:none;display:flex;align-items:center;justify-content:center;flex-direction:row;flex-wrap:wrap;">
-            <div id="t1_top" class="player">
-                <div style="position:absolute;background-image:url('https://i.imgur.com/EeIP0f7.png');height:50px;width:50px;background-size:100%;box-shadow:inset 0px 0px 100px #000"></div>
-                <div id="t1_top_name" style="position:absolute;top:0px;left:5px;font-size:35px;font-style:italic;"></div>
-                <div id="t1_top_rank" style="position:absolute;bottom:0px;left:5px;font-size:30px;"></div>
-                <div id="t1_top_roles" style="position:absolute;bottom:0px;right:5px;font-size:20px;"></div>
-            </div>
-            <div id="t2_top" class="player">
-                <div style="position:absolute;background-image:url('https://i.imgur.com/EeIP0f7.png');height:50px;width:50px;background-size:100%;box-shadow:inset 0px 0px 100px #000"></div>
-                <div id="t2_top_name" style="position:absolute;top:0px;right:5px;font-size:35px;font-style:italic;"></div>
-                <div id="t2_top_rank" style="position:absolute;bottom:0px;left:5px;font-size:30px;"></div>
-                <div id="t2_top_roles" style="position:absolute;bottom:0px;right:5px;font-size:20px;"></div>
-            </div>
-            <div id="t1_jng" class="player">
-                <div style="position:absolute;background-image:url('https://i.imgur.com/dsNzJIw.png');height:50px;width:50px;background-size:100%;box-shadow:inset 0px 0px 100px #000"></div>
-                <div id="t1_jng_name" style="position:absolute;top:0px;left:5px;font-size:35px;font-style:italic;"></div>
-                <div id="t1_jng_rank" style="position:absolute;bottom:0px;left:5px;font-size:30px;"></div>
-                <div id="t1_jng_roles" style="position:absolute;bottom:0px;right:5px;font-size:20px;"></div>
-            </div>
-            <div id="t2_jng" class="player">
-                <div style="position:absolute;background-image:url('https://i.imgur.com/dsNzJIw.png');height:50px;width:50px;background-size:100%;box-shadow:inset 0px 0px 100px #000"></div>
-                <div id="t2_jng_name" style="position:absolute;top:0px;right:5px;font-size:35px;font-style:italic;"></div>
-                <div id="t2_jng_rank" style="position:absolute;bottom:0px;left:5px;font-size:30px;"></div>
-                <div id="t2_jng_roles" style="position:absolute;bottom:0px;right:5px;font-size:20px;"></div>
-            </div>
-            <div id="t1_mid" class="player">
-                <div style="position:absolute;background-image:url('https://i.imgur.com/SGd9sK5.png');height:50px;width:50px;background-size:100%;box-shadow:inset 0px 0px 100px #000"></div>
-                <div id="t1_mid_name" style="position:absolute;top:0px;left:5px;font-size:35px;font-style:italic;"></div>
-                <div id="t1_mid_rank" style="position:absolute;bottom:0px;left:5px;font-size:30px;"></div>
-                <div id="t1_mid_roles" style="position:absolute;bottom:0px;right:5px;font-size:20px;"></div>
-            </div>
-            <div id="t2_mid" class="player">
-                <div style="position:absolute;background-image:url('https://i.imgur.com/SGd9sK5.png');height:50px;width:50px;background-size:100%;box-shadow:inset 0px 0px 100px #000"></div>
-                <div id="t2_mid_name" style="position:absolute;top:0px;right:5px;font-size:35px;font-style:italic;"></div>
-                <div id="t2_mid_rank" style="position:absolute;bottom:0px;left:5px;font-size:30px;"></div>
-                <div id="t2_mid_roles" style="position:absolute;bottom:0px;right:5px;font-size:20px;"></div>
-            </div>
-            <div id="t1_adc" class="player">
-                <div style="position:absolute;background-image:url('https://i.imgur.com/06ZpGot.png');height:50px;width:50px;background-size:100%;box-shadow:inset 0px 0px 100px #000"></div>
-                <div id="t1_adc_name" style="position:absolute;top:0px;left:5px;font-size:35px;font-style:italic;"></div>
-                <div id="t1_adc_rank" style="position:absolute;bottom:0px;left:5px;font-size:30px;"></div>
-                <div id="t1_adc_roles" style="position:absolute;bottom:0px;right:5px;font-size:20px;"></div>
-            </div>
-            <div id="t2_adc" class="player">
-                <div style="position:absolute;background-image:url('https://i.imgur.com/06ZpGot.png');height:50px;width:50px;background-size:100%;box-shadow:inset 0px 0px 100px #000"></div>
-                <div id="t2_adc_name" style="position:absolute;top:0px;right:5px;font-size:35px;font-style:italic;"></div>
-                <div id="t2_adc_rank" style="position:absolute;bottom:0px;left:5px;font-size:30px;"></div>
-                <div id="t2_adc_roles" style="position:absolute;bottom:0px;right:5px;font-size:20px;"></div>
-            </div>
-            <div id="t1_sup" class="player">
-                <div style="position:absolute;background-image:url('https://i.imgur.com/KLbG8CP.png');height:50px;width:50px;background-size:100%;box-shadow:inset 0px 0px 100px #000"></div>
-                <div id="t1_sup_name" style="position:absolute;top:0px;left:5px;font-size:35px;font-style:italic;"></div>
-                <div id="t1_sup_rank" style="position:absolute;bottom:0px;left:5px;font-size:30px;"></div>
-                <div id="t1_sup_roles" style="position:absolute;bottom:0px;right:5px;font-size:20px;"></div>
-            </div>
-            <div id="t2_sup" class="player">
-                <div style="position:absolute;background-image:url('https://i.imgur.com/KLbG8CP.png');height:50px;width:50px;background-size:100%;box-shadow:inset 0px 0px 100px #000"></div>
-                <div id="t2_sup_name" style="position:absolute;top:0px;right:5px;font-size:35px;font-style:italic;"></div>
-                <div id="t2_sup_rank" style="position:absolute;bottom:0px;left:5px;font-size:30px;"></div>
-                <div id="t2_sup_roles" style="position:absolute;bottom:0px;right:5px;font-size:20px;"></div>
-            </div>
+        <video width="1000px" height="auto" autoplay loop muted style="position:absolute;filter:blur(3px) brightness(0.3);margin-top:-350px;"><source src="https://www.leagueoflegends.com/static/hero-0632cbf2872c5cc0dffa93d2ae8a29e8.webm" type="video/mp4"> </video>
+        <video width="800px" height="auto" autoplay loop muted style="position:absolute;margin-top:-350px;"><source src="https://www.leagueoflegends.com/static/hero-0632cbf2872c5cc0dffa93d2ae8a29e8.webm" type="video/mp4"> </video>
+        <img src="https://i.imgur.com/MMHuF57.png" style="position:absolute;height:330px;width:900px;margin-top:-350px;border-top:120px solid #000;border-bottom:120px solid #000;border-left:100px solid #000;border-right:100px solid #000;user-select:none;-webkit-user-drag: none;-khtml-user-drag: none;-moz-user-drag: none;-o-user-drag: none;user-drag: none;">
+        <img src="https://i.imgur.com/pMQXOvI.png" style="position:absolute;height:300px;margin-top:-350px;margin-left:-120px;user-select:none;-webkit-user-drag: none;-khtml-user-drag: none;-moz-user-drag: none;-o-user-drag: none;user-drag: none;">
+        <div style="position:absolute;margin-top:-700px;margin-left:470px;text-align:left;font-size:50px;font-family:'Staatliches';color:rgba(0, 0, 0, 0.815);text-shadow:0px 0px 4px rgb(0, 0, 0);font-weight:bold;line-height:40px;">
+            Custom <br> 
+            Game <br> 
+            Balancer <br> 
+            Tool
         </div>
-        <textarea style="position:relative;overflow:hidden;background-color: #000;margin-top:10px;color:#FFF;width:200px;" id="player_list" name="Player List" placeholder="Insert Player List Here"></textarea>
-        <button style="position:relative;background-color: #000;color:#FFF;margin-top:10px;" onclick="import_players()">Import Players</button>        <button style="position:relative;background-color: #000;color:#FFF;margin-top:10px;" onclick="reset()">Reset</button>
-        <div style="position:absolute;margin-top:-570px;text-align:center;font-size:50px;font-family:'Permanent Marker';color:orange;text-shadow:0px 0px 4px red;">VS</div>
-        <div style="position:absolute;margin-top:-590px;margin-left:-500px;text-align:center;font-size:50px;font-family:'Permanent Marker';color:orange;text-shadow:0px 0px 4px red;">Team One</div>
-        <div style="position:absolute;margin-top:-590px;margin-left:500px;text-align:center;font-size:50px;font-family:'Permanent Marker';color:orange;text-shadow:0px 0px 4px red;">Team Two</div>
-        <div style="position:relative;width:300px;height:30px;border:1px solid #FFF;margin-top:10px;background: rgb(0,255,19);
-        background: linear-gradient(90deg, rgba(0,255,19,1) 10%, rgba(255,181,0,1) 30%, rgba(255,181,0,1) 40%, rgba(255,0,0,1) 60%, rgba(173,0,0,1) 92%);">
-            <div id="strictness_meter" style="position:absolute;top:0px;width:0px;height:100%;border-right:3px solid #000;transition:all 0.5s;"></div>
-            <div style="position:absolute;top:-18px;font-family:'Staatliches';color:#FFF;">Balance Meter</div>
-            <div id="matchup_counter" style="position:absolute;right:0px;bottom:-18px;font-family:'Staatliches';color:#FFF;"></div>
+        <div style="position:absolute;margin-top:-700px;margin-left:470px;text-align:left;font-size:50px;font-family:'Staatliches';color:rgba(0, 0, 0, 0.815);text-shadow:3px 3px 1px rgb(0, 0, 0);font-weight:bold;line-height:40px;">
+            Custom <br> 
+            Game <br> 
+            Balancer <br> 
+            Tool
         </div>
-        <div style="position:absolute;left:10px;bottom:10px;color:grey;font-family:'';font-size:15px;pointer-events:none;">
-            <b>How to create player list.</b><br>
-            1) One player per line. <br>
-            2) Do not include any spaces in the player name. <br>
-            3) Ranks are formatted like so: Bronze 1 = B1, Gold 1 = G1, etc... <br> (Do not include LP for higher ranks: Masters = M, GrandMasters = GM, Challenger = C) <br>
-            4) Main-Role and Off-Role are formatted like so: Top = TOP, Jungle = JNG, Mid = MID, Adc = ADC, Support = SUP. <br> <br>
-            Example Formatting (Case Sensitive!): <br>
-            Player1 G3 TOP MID <br>
-            Player2 S2 JNG ADC <br>
-            etc... <br> <br>
+        <div style="position:absolute;margin-top:-700px;margin-left:470px;text-align:left;font-size:50px;font-family:'Staatliches';color:transparent;font-weight:bold;line-height:40px;background-color:orange; background-image:url('https://i.imgur.com/rLZZ4Po.png');background-clip:text;-webkit-background-clip:text;">
+            Custom <br> 
+            Game <br> 
+            Balancer <br> 
+            Tool
+        </div>
+        <div style="position:absolute;height:230px;width:710px;border:2px solid orange;margin-top:-700px;clip-path: polygon(90% 0, 100% 30%, 100% 100%, 0 100%, 0 0);"></div>
+        <div style="position:absolute;height:2px;width:100px;background-color:orange;margin-top:-862px;margin-left:642px;transform:rotate(45deg);"></div>
+        <div style="position:absolute;height:100px;width:1000px;background-color:orange;margin-top:-690px;margin-left:-1710px;"></div>
+        <div style="position:absolute;height:100px;width:1000px;background-color:orange;margin-top:-690px;margin-right:-1710px;"></div>
+        <div style="position:absolute;margin-top:-640px;margin-right:-900px;font-family:'Staatliches';font-size:17px;color:#000;font-weight:bold;">Version: 0.3 Beta<br>Made by Burrito Knight (NA)</div>
+        <div style="position:absolute;margin-top:-530px;margin-right:-1000px;font-family:'Staatliches';font-size:17px;color:orange;font-weight:bold;">Have any feedback, suggestions, or ideas?<br> Click <a href="https://forms.gle/RMeBg8pJYzK74oLs6" target="_blank">Here</a>! </div>
+        <div id="AP" style="position:absolute;margin-top:250px;height:650px;width:710px;border:2px solid orange;display:flex;justify-content:center;align-items:center;user-select:none;">
+            <div style="position:absolute;top:25px;height:200px;width:200px;right:-230px;background-color: orange;background-image:url('https://i.imgur.com/rLZZ4Po.png');display:flex;justify-content:center;align-items:center;">
+                <div style="position:absolute;top:5px;font-family:'Staatliches';color:#000;font-size:25px;font-weight:bold;"> - ADD A PLAYER LIST - </div>
+                <textarea id="player_list_import" style="position:absolute;top:50px;height:25px;width:190px;background-color:#000;color:#FFF;resize:none;overflow:hidden;font-size:16px;text-align:center;" placeholder="Paste List Here"></textarea>
+                <div id="add_player_button" onclick="add_player_list()" style="position:absolute;height:90px;width:100px;border-radius:5px;display:flex;align-items:center;justify-content:center;flex-direction: column;flex-wrap: wrap;cursor:pointer;">
+                    <div style="position:absolute;font-family:'Staatliches';font-size:24px;font-weight:bold;text-align:center;"> Add Player List </div>
+                </div>
+            </div>
+            <div style="position:absolute;top:25px;height:150px;width:660px;background-color:orange;background-image:url('https://i.imgur.com/rLZZ4Po.png');display:flex;justify-content:center;align-items:center;">
+                <div style="position:absolute;top:5px;font-family:'Staatliches';color:#000;font-size:25px;font-weight:bold;"> - ADD A PLAYER - </div>
+                <div style="position:absolute;left:15px;bottom:15px;height:90px;width:160px;border:2px solid #000;border-radius:5px;display:flex;align-items:center;justify-content:center;box-shadow:0px 0px 4px #000;">
+                    <div style="position:absolute;top:15px;font-family:'Staatliches';color:#000;font-size:20px;font-weight:bold;"> Step One: IGN </div>
+                    <textarea id="player_name" style="position:absolute;bottom:15px;height:25px;width:150px;background-color:#000;color:#FFF;resize:none;overflow:hidden;font-size:16px;text-align:center;" placeholder="TheLegend27"></textarea>
+                </div>
+                <div style="position:absolute;left:200px;bottom:15px;height:90px;width:140px;border:2px solid #000;border-radius:5px;display:flex;align-items:center;justify-content:center;box-shadow:0px 0px 4px #000;">
+                    <div style="position:absolute;top:15px;font-family:'Staatliches';color:#000;font-size:20px;font-weight:bold;"> Step Two: Rank </div>
+                    <select id="player_rank" style="position:absolute;bottom:15px;height:25px;width:130px;background-color:#000;color:#FFF;font-size:16px;">
+                        <option value="0" >Iron 4</option>
+                        <option value="1" >Iron 3</option>
+                        <option value="2" >Iron 2</option>
+                        <option value="3" >Iron 1</option>
+                        <option value="4" >Bronze 4</option>
+                        <option value="5" >Bronze 3</option>
+                        <option value="6" >Bronze 2</option>
+                        <option value="7" >Bronze 1</option>
+                        <option value="8" >Silver 4</option>
+                        <option value="9" >Silver 3</option>
+                        <option value="10">Silver 2</option>
+                        <option value="11">Silver 1</option>
+                        <option value="12">Gold 4</option>
+                        <option value="13">Gold 3</option>
+                        <option value="14">Gold 2</option>
+                        <option value="15">Gold 1</option>
+                        <option value="16">Plat 4</option>
+                        <option value="17">Plat 3</option>
+                        <option value="18">Plat 2</option>
+                        <option value="19">Plat 1</option>
+                        <option value="20">Diamond 4</option>
+                        <option value="21">Diamond 3</option>
+                        <option value="22">Diamond 2</option>
+                        <option value="23">Diamond 1</option>
+                        <option value="24">Master</option>
+                        <option value="25">Grandmaster</option>
+                        <option value="26">Challenger</option>
+                      </select>
+                </div>
+                <div style="position:absolute;left:365px;bottom:15px;height:90px;width:150px;border:2px solid #000;border-radius:5px;display:flex;align-items:center;justify-content:center;box-shadow:0px 0px 4px #000;flex-direction: column;flex-wrap: wrap;">
+                    <div style="position:absolute;top:15px;font-family:'Staatliches';color:#000;font-size:20px;font-weight:bold;"> Step Three: Rolls </div>
+                    <div style="position:absolute;top:38px;font-family:'Staatliches';color:#000;font-size:10px;font-weight:bold;"> (main role) <span style="color:orange">------------</span> (off role) </div>
+                    <select id="player_mainrole" style="position:absolute;left:5px;bottom:15px;height:25px;width:60px;background-color:#000;color:#FFF;font-size:16px;">
+                        <option value="0" >TOP</option>
+                        <option value="1" >JNG</option>
+                        <option value="2" >MID</option>
+                        <option value="3" >ADC</option>
+                        <option value="4" >SUP</option>
+                      </select>
+                      <select id="player_offrole" style="position:absolute;right:5px;bottom:15px;height:25px;width:60px;background-color:#000;color:#FFF;font-size:16px;">
+                        <option value="0" >TOP</option>
+                        <option value="1" >JNG</option>
+                        <option value="2" >MID</option>
+                        <option value="3" >ADC</option>
+                        <option value="4" >SUP</option>
+                      </select>
+                </div>
+                <div id="add_player_button" onclick="add_player(current_player)" style="position:absolute;right:15px;height:90px;width:100px;border-radius:5px;display:flex;align-items:center;justify-content:center;flex-direction: column;flex-wrap: wrap;cursor:pointer;">
+                    <div style="position:absolute;font-family:'Staatliches';font-size:30px;font-weight:bold;text-align:center;"> Add Player </div>
+                </div>
+            </div>
+            <div style="position:absolute;margin-top:-300px;margin-left:530px;height:25px;width:fit-content;background-color:orange;line-height:10px;box-shadow:0px 0px 4px #000;display:flex;align-items:center;justify-content:center;font-family:'Staatliches';font-size:25px;font-weight:bold;">
+                <span id="player_count" style="padding-top:1px;padding-left:5px;padding-right:5px;color:red;text-shadow:2px 2px 2px #000;letter-spacing: 1px;">0/30</span>
+            </div>
+            <div style="position:absolute;top:205px;height:415px;width:660px;background-color:#000;border:2px solid orange;overflow:auto;">
+                <div id="playerlist_1" style="position:relative;height:0px;width:630px;pointer-events:none;background-color:orange;margin-top:10px;margin-left:10px;color:#000;font-family:'Staatliches';font-size:30px;box-shadow:0px 0px 4px rgba(128, 128, 128, 0.5);display:flex;align-items:center;">
+                    <div id="playerlist_1_name" style="position:relative;padding:3px;width:250px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div id="playerlist_1_rank" style="position:relative;padding:3px;width:100px;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">-</div>
+                    <div id="playerlist_1_mainrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:5px;width:fit-content;font-size:18px;font-weight:bold;">/</div>
+                    <div id="playerlist_1_offrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div onclick="close_player(1)" style="position:absolute;padding:3px;right:5px;height:15px;width:15px;border:2px solid #000;font-size:13px;font-weight:bold;display:flex;justify-content:center;align-items:center;line-height:12px;cursor:pointer;">✖</div>
+                </div>
 
-            <b>Known Bugs:</b>
-            If balance meter moves but no teams are displayed simply click import again.
-        </div>
+                <div id="playerlist_2" style="position:relative;height:0px;width:630px;pointer-events:none;background-color:orange;margin-top:10px;margin-left:10px;color:#000;font-family:'Staatliches';font-size:30px;box-shadow:0px 0px 4px rgba(128, 128, 128, 0.5);display:flex;align-items:center;">
+                    <div id="playerlist_2_name" style="position:relative;padding:3px;width:250px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div id="playerlist_2_rank" style="position:relative;padding:3px;width:100px;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">-</div>
+                    <div id="playerlist_2_mainrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:5px;width:fit-content;font-size:18px;font-weight:bold;">/</div>
+                    <div id="playerlist_2_offrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div onclick="close_player(2)" style="position:absolute;padding:3px;right:5px;height:15px;width:15px;border:2px solid #000;font-size:13px;font-weight:bold;display:flex;justify-content:center;align-items:center;line-height:12px;cursor:pointer;">✖</div>
+                </div>
+                
+                <div id="playerlist_3" style="position:relative;height:0px;width:630px;pointer-events:none;background-color:orange;margin-top:10px;margin-left:10px;color:#000;font-family:'Staatliches';font-size:30px;box-shadow:0px 0px 4px rgba(128, 128, 128, 0.5);display:flex;align-items:center;">
+                    <div id="playerlist_3_name" style="position:relative;padding:3px;width:250px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div id="playerlist_3_rank" style="position:relative;padding:3px;width:100px;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">-</div>
+                    <div id="playerlist_3_mainrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:5px;width:fit-content;font-size:18px;font-weight:bold;">/</div>
+                    <div id="playerlist_3_offrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div onclick="close_player(3)" style="position:absolute;padding:3px;right:5px;height:15px;width:15px;border:2px solid #000;font-size:13px;font-weight:bold;display:flex;justify-content:center;align-items:center;line-height:12px;cursor:pointer;">✖</div>
+                </div>
+                
+                <div id="playerlist_4" style="position:relative;height:0px;width:630px;pointer-events:none;background-color:orange;margin-top:10px;margin-left:10px;color:#000;font-family:'Staatliches';font-size:30px;box-shadow:0px 0px 4px rgba(128, 128, 128, 0.5);display:flex;align-items:center;">
+                    <div id="playerlist_4_name" style="position:relative;padding:3px;width:250px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div id="playerlist_4_rank" style="position:relative;padding:3px;width:100px;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">-</div>
+                    <div id="playerlist_4_mainrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:5px;width:fit-content;font-size:18px;font-weight:bold;">/</div>
+                    <div id="playerlist_4_offrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div onclick="close_player(4)" style="position:absolute;padding:3px;right:5px;height:15px;width:15px;border:2px solid #000;font-size:13px;font-weight:bold;display:flex;justify-content:center;align-items:center;line-height:12px;cursor:pointer;">✖</div>
+                </div>
 
-        <div style="position:absolute;left:10px;top:10px;color:grey;font-family:'';font-size:15px;pointer-events:none;">
-            <b>League of Legends Custom Game Balancer Tool</b><br>
-            v0.2 Beta <br>
-            Made by: Burrito Knight(NA)<br><br>
-            How to use:<br>
-            1) Enter Player List (Minimum 10 Players)<br>
-            2) Click Import Players Button (Allow for a few seconds for the matchup to load.)<br>
-            3) Enjoy your generated matchup! (If nothing shows up the player skill difference is too high to balance!)<br> <br>
+                
+                <div id="playerlist_5" style="position:relative;height:0px;width:630px;pointer-events:none;background-color:orange;margin-top:10px;margin-left:10px;color:#000;font-family:'Staatliches';font-size:30px;box-shadow:0px 0px 4px rgba(128, 128, 128, 0.5);display:flex;align-items:center;">
+                    <div id="playerlist_5_name" style="position:relative;padding:3px;width:250px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div id="playerlist_5_rank" style="position:relative;padding:3px;width:100px;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">-</div>
+                    <div id="playerlist_5_mainrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:5px;width:fit-content;font-size:18px;font-weight:bold;">/</div>
+                    <div id="playerlist_5_offrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div onclick="close_player(5)" style="position:absolute;padding:3px;right:5px;height:15px;width:15px;border:2px solid #000;font-size:13px;font-weight:bold;display:flex;justify-content:center;align-items:center;line-height:12px;cursor:pointer;">✖</div>
+                </div>
+
+                                
+                <div id="playerlist_6" style="position:relative;height:0px;width:630px;pointer-events:none;background-color:orange;margin-top:10px;margin-left:10px;color:#000;font-family:'Staatliches';font-size:30px;box-shadow:0px 0px 4px rgba(128, 128, 128, 0.5);display:flex;align-items:center;">
+                    <div id="playerlist_6_name" style="position:relative;padding:3px;width:250px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div id="playerlist_6_rank" style="position:relative;padding:3px;width:100px;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">-</div>
+                    <div id="playerlist_6_mainrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:5px;width:fit-content;font-size:18px;font-weight:bold;">/</div>
+                    <div id="playerlist_6_offrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div onclick="close_player(6)" style="position:absolute;padding:3px;right:5px;height:15px;width:15px;border:2px solid #000;font-size:13px;font-weight:bold;display:flex;justify-content:center;align-items:center;line-height:12px;cursor:pointer;">✖</div>
+                </div>
+
+                <div id="playerlist_7" style="position:relative;height:0px;width:630px;pointer-events:none;background-color:orange;margin-top:10px;margin-left:10px;color:#000;font-family:'Staatliches';font-size:30px;box-shadow:0px 0px 4px rgba(128, 128, 128, 0.5);display:flex;align-items:center;">
+                    <div id="playerlist_7_name" style="position:relative;padding:3px;width:250px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div id="playerlist_7_rank" style="position:relative;padding:3px;width:100px;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">-</div>
+                    <div id="playerlist_7_mainrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:5px;width:fit-content;font-size:18px;font-weight:bold;">/</div>
+                    <div id="playerlist_7_offrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div onclick="close_player(7)" style="position:absolute;padding:3px;right:5px;height:15px;width:15px;border:2px solid #000;font-size:13px;font-weight:bold;display:flex;justify-content:center;align-items:center;line-height:12px;cursor:pointer;">✖</div>
+                </div>
+
+                <div id="playerlist_8" style="position:relative;height:0px;width:630px;pointer-events:none;background-color:orange;margin-top:10px;margin-left:10px;color:#000;font-family:'Staatliches';font-size:30px;box-shadow:0px 0px 4px rgba(128, 128, 128, 0.5);display:flex;align-items:center;">
+                    <div id="playerlist_8_name" style="position:relative;padding:3px;width:250px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div id="playerlist_8_rank" style="position:relative;padding:3px;width:100px;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">-</div>
+                    <div id="playerlist_8_mainrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:5px;width:fit-content;font-size:18px;font-weight:bold;">/</div>
+                    <div id="playerlist_8_offrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div onclick="close_player(8)" style="position:absolute;padding:3px;right:5px;height:15px;width:15px;border:2px solid #000;font-size:13px;font-weight:bold;display:flex;justify-content:center;align-items:center;line-height:12px;cursor:pointer;">✖</div>
+                </div>
+
+                <div id="playerlist_9" style="position:relative;height:0px;width:630px;pointer-events:none;background-color:orange;margin-top:10px;margin-left:10px;color:#000;font-family:'Staatliches';font-size:30px;box-shadow:0px 0px 4px rgba(128, 128, 128, 0.5);display:flex;align-items:center;">
+                    <div id="playerlist_9_name" style="position:relative;padding:3px;width:250px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div id="playerlist_9_rank" style="position:relative;padding:3px;width:100px;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">-</div>
+                    <div id="playerlist_9_mainrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:5px;width:fit-content;font-size:18px;font-weight:bold;">/</div>
+                    <div id="playerlist_9_offrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div onclick="close_player(9)" style="position:absolute;padding:3px;right:5px;height:15px;width:15px;border:2px solid #000;font-size:13px;font-weight:bold;display:flex;justify-content:center;align-items:center;line-height:12px;cursor:pointer;">✖</div>
+                </div>
+
+                <div id="playerlist_10" style="position:relative;height:0px;width:630px;pointer-events:none;background-color:orange;margin-top:10px;margin-left:10px;color:#000;font-family:'Staatliches';font-size:30px;box-shadow:0px 0px 4px rgba(128, 128, 128, 0.5);display:flex;align-items:center;">
+                    <div id="playerlist_10_name" style="position:relative;padding:3px;width:250px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div id="playerlist_10_rank" style="position:relative;padding:3px;width:100px;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">-</div>
+                    <div id="playerlist_10_mainrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:5px;width:fit-content;font-size:18px;font-weight:bold;">/</div>
+                    <div id="playerlist_10_offrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div onclick="close_player(10)" style="position:absolute;padding:3px;right:5px;height:15px;width:15px;border:2px solid #000;font-size:13px;font-weight:bold;display:flex;justify-content:center;align-items:center;line-height:12px;cursor:pointer;">✖</div>
+                </div>
+
+                <div id="playerlist_11" style="position:relative;height:0px;width:630px;pointer-events:none;background-color:orange;margin-top:10px;margin-left:10px;color:#000;font-family:'Staatliches';font-size:30px;box-shadow:0px 0px 4px rgba(128, 128, 128, 0.5);display:flex;align-items:center;">
+                    <div id="playerlist_11_name" style="position:relative;padding:3px;width:250px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div id="playerlist_11_rank" style="position:relative;padding:3px;width:100px;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">-</div>
+                    <div id="playerlist_11_mainrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:5px;width:fit-content;font-size:18px;font-weight:bold;">/</div>
+                    <div id="playerlist_11_offrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div onclick="close_player(11)" style="position:absolute;padding:3px;right:5px;height:15px;width:15px;border:2px solid #000;font-size:13px;font-weight:bold;display:flex;justify-content:center;align-items:center;line-height:12px;cursor:pointer;">✖</div>
+                </div>
+
+                <div id="playerlist_12" style="position:relative;height:0px;width:630px;pointer-events:none;background-color:orange;margin-top:10px;margin-left:10px;color:#000;font-family:'Staatliches';font-size:30px;box-shadow:0px 0px 4px rgba(128, 128, 128, 0.5);display:flex;align-items:center;">
+                    <div id="playerlist_12_name" style="position:relative;padding:3px;width:250px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div id="playerlist_12_rank" style="position:relative;padding:3px;width:100px;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">-</div>
+                    <div id="playerlist_12_mainrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:5px;width:fit-content;font-size:18px;font-weight:bold;">/</div>
+                    <div id="playerlist_12_offrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div onclick="close_player(12)" style="position:absolute;padding:3px;right:5px;height:15px;width:15px;border:2px solid #000;font-size:13px;font-weight:bold;display:flex;justify-content:center;align-items:center;line-height:12px;cursor:pointer;">✖</div>
+                </div>
+                
+                <div id="playerlist_13" style="position:relative;height:0px;width:630px;pointer-events:none;background-color:orange;margin-top:10px;margin-left:10px;color:#000;font-family:'Staatliches';font-size:30px;box-shadow:0px 0px 4px rgba(128, 128, 128, 0.5);display:flex;align-items:center;">
+                    <div id="playerlist_13_name" style="position:relative;padding:3px;width:250px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div id="playerlist_13_rank" style="position:relative;padding:3px;width:100px;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">-</div>
+                    <div id="playerlist_13_mainrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:5px;width:fit-content;font-size:18px;font-weight:bold;">/</div>
+                    <div id="playerlist_13_offrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div onclick="close_player(13)" style="position:absolute;padding:3px;right:5px;height:15px;width:15px;border:2px solid #000;font-size:13px;font-weight:bold;display:flex;justify-content:center;align-items:center;line-height:12px;cursor:pointer;">✖</div>
+                </div>
+                
+                <div id="playerlist_14" style="position:relative;height:0px;width:630px;pointer-events:none;background-color:orange;margin-top:10px;margin-left:10px;color:#000;font-family:'Staatliches';font-size:30px;box-shadow:0px 0px 4px rgba(128, 128, 128, 0.5);display:flex;align-items:center;">
+                    <div id="playerlist_14_name" style="position:relative;padding:3px;width:250px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div id="playerlist_14_rank" style="position:relative;padding:3px;width:100px;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">-</div>
+                    <div id="playerlist_14_mainrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:5px;width:fit-content;font-size:18px;font-weight:bold;">/</div>
+                    <div id="playerlist_14_offrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div onclick="close_player(14)" style="position:absolute;padding:3px;right:5px;height:15px;width:15px;border:2px solid #000;font-size:13px;font-weight:bold;display:flex;justify-content:center;align-items:center;line-height:12px;cursor:pointer;">✖</div>
+                </div>
+
+                
+                <div id="playerlist_15" style="position:relative;height:0px;width:630px;pointer-events:none;background-color:orange;margin-top:10px;margin-left:10px;color:#000;font-family:'Staatliches';font-size:30px;box-shadow:0px 0px 4px rgba(128, 128, 128, 0.5);display:flex;align-items:center;">
+                    <div id="playerlist_15_name" style="position:relative;padding:3px;width:250px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div id="playerlist_15_rank" style="position:relative;padding:3px;width:100px;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">-</div>
+                    <div id="playerlist_15_mainrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:5px;width:fit-content;font-size:18px;font-weight:bold;">/</div>
+                    <div id="playerlist_15_offrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div onclick="close_player(15)" style="position:absolute;padding:3px;right:5px;height:15px;width:15px;border:2px solid #000;font-size:13px;font-weight:bold;display:flex;justify-content:center;align-items:center;line-height:12px;cursor:pointer;">✖</div>
+                </div>
+
+                                
+                <div id="playerlist_16" style="position:relative;height:0px;width:630px;pointer-events:none;background-color:orange;margin-top:10px;margin-left:10px;color:#000;font-family:'Staatliches';font-size:30px;box-shadow:0px 0px 4px rgba(128, 128, 128, 0.5);display:flex;align-items:center;">
+                    <div id="playerlist_16_name" style="position:relative;padding:3px;width:250px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div id="playerlist_16_rank" style="position:relative;padding:3px;width:100px;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">-</div>
+                    <div id="playerlist_16_mainrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:5px;width:fit-content;font-size:18px;font-weight:bold;">/</div>
+                    <div id="playerlist_16_offrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div onclick="close_player(16)" style="position:absolute;padding:3px;right:5px;height:15px;width:15px;border:2px solid #000;font-size:13px;font-weight:bold;display:flex;justify-content:center;align-items:center;line-height:12px;cursor:pointer;">✖</div>
+                </div>
+
+                <div id="playerlist_17" style="position:relative;height:0px;width:630px;pointer-events:none;background-color:orange;margin-top:10px;margin-left:10px;color:#000;font-family:'Staatliches';font-size:30px;box-shadow:0px 0px 4px rgba(128, 128, 128, 0.5);display:flex;align-items:center;">
+                    <div id="playerlist_17_name" style="position:relative;padding:3px;width:250px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div id="playerlist_17_rank" style="position:relative;padding:3px;width:100px;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">-</div>
+                    <div id="playerlist_17_mainrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:5px;width:fit-content;font-size:18px;font-weight:bold;">/</div>
+                    <div id="playerlist_17_offrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div onclick="close_player(17)" style="position:absolute;padding:3px;right:5px;height:15px;width:15px;border:2px solid #000;font-size:13px;font-weight:bold;display:flex;justify-content:center;align-items:center;line-height:12px;cursor:pointer;">✖</div>
+                </div>
+
+                <div id="playerlist_18" style="position:relative;height:0px;width:630px;pointer-events:none;background-color:orange;margin-top:10px;margin-left:10px;color:#000;font-family:'Staatliches';font-size:30px;box-shadow:0px 0px 4px rgba(128, 128, 128, 0.5);display:flex;align-items:center;">
+                    <div id="playerlist_18_name" style="position:relative;padding:3px;width:250px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div id="playerlist_18_rank" style="position:relative;padding:3px;width:100px;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">-</div>
+                    <div id="playerlist_18_mainrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:5px;width:fit-content;font-size:18px;font-weight:bold;">/</div>
+                    <div id="playerlist_18_offrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div onclick="close_player(18)" style="position:absolute;padding:3px;right:5px;height:15px;width:15px;border:2px solid #000;font-size:13px;font-weight:bold;display:flex;justify-content:center;align-items:center;line-height:12px;cursor:pointer;">✖</div>
+                </div>
+
+                <div id="playerlist_19" style="position:relative;height:0px;width:630px;pointer-events:none;background-color:orange;margin-top:10px;margin-left:10px;color:#000;font-family:'Staatliches';font-size:30px;box-shadow:0px 0px 4px rgba(128, 128, 128, 0.5);display:flex;align-items:center;">
+                    <div id="playerlist_19_name" style="position:relative;padding:3px;width:250px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div id="playerlist_19_rank" style="position:relative;padding:3px;width:100px;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">-</div>
+                    <div id="playerlist_19_mainrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:5px;width:fit-content;font-size:18px;font-weight:bold;">/</div>
+                    <div id="playerlist_19_offrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div onclick="close_player(19)" style="position:absolute;padding:3px;right:5px;height:15px;width:15px;border:2px solid #000;font-size:13px;font-weight:bold;display:flex;justify-content:center;align-items:center;line-height:12px;cursor:pointer;">✖</div>
+                </div>
+
+                <div id="playerlist_20" style="position:relative;height:0px;width:630px;pointer-events:none;background-color:orange;margin-top:10px;margin-left:10px;color:#000;font-family:'Staatliches';font-size:30px;box-shadow:0px 0px 4px rgba(128, 128, 128, 0.5);display:flex;align-items:center;">
+                    <div id="playerlist_20_name" style="position:relative;padding:3px;width:250px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div id="playerlist_20_rank" style="position:relative;padding:3px;width:100px;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">-</div>
+                    <div id="playerlist_20_mainrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:5px;width:fit-content;font-size:18px;font-weight:bold;">/</div>
+                    <div id="playerlist_20_offrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div onclick="close_player(20)" style="position:absolute;padding:3px;right:5px;height:15px;width:15px;border:2px solid #000;font-size:13px;font-weight:bold;display:flex;justify-content:center;align-items:center;line-height:12px;cursor:pointer;">✖</div>
+                </div>
+
+                <div id="playerlist_21" style="position:relative;height:0px;width:630px;pointer-events:none;background-color:orange;margin-top:10px;margin-left:10px;color:#000;font-family:'Staatliches';font-size:30px;box-shadow:0px 0px 4px rgba(128, 128, 128, 0.5);display:flex;align-items:center;">
+                    <div id="playerlist_21_name" style="position:relative;padding:3px;width:250px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div id="playerlist_21_rank" style="position:relative;padding:3px;width:100px;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">-</div>
+                    <div id="playerlist_21_mainrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:5px;width:fit-content;font-size:18px;font-weight:bold;">/</div>
+                    <div id="playerlist_21_offrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div onclick="close_player(21)" style="position:absolute;padding:3px;right:5px;height:15px;width:15px;border:2px solid #000;font-size:13px;font-weight:bold;display:flex;justify-content:center;align-items:center;line-height:12px;cursor:pointer;">✖</div>
+                </div>
+
+                <div id="playerlist_22" style="position:relative;height:0px;width:630px;pointer-events:none;background-color:orange;margin-top:10px;margin-left:10px;color:#000;font-family:'Staatliches';font-size:30px;box-shadow:0px 0px 4px rgba(128, 128, 128, 0.5);display:flex;align-items:center;">
+                    <div id="playerlist_22_name" style="position:relative;padding:3px;width:250px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div id="playerlist_22_rank" style="position:relative;padding:3px;width:100px;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">-</div>
+                    <div id="playerlist_22_mainrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:5px;width:fit-content;font-size:18px;font-weight:bold;">/</div>
+                    <div id="playerlist_22_offrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div onclick="close_player(22)" style="position:absolute;padding:3px;right:5px;height:15px;width:15px;border:2px solid #000;font-size:13px;font-weight:bold;display:flex;justify-content:center;align-items:center;line-height:12px;cursor:pointer;">✖</div>
+                </div>
+                
+                <div id="playerlist_23" style="position:relative;height:0px;width:630px;pointer-events:none;background-color:orange;margin-top:10px;margin-left:10px;color:#000;font-family:'Staatliches';font-size:30px;box-shadow:0px 0px 4px rgba(128, 128, 128, 0.5);display:flex;align-items:center;">
+                    <div id="playerlist_23_name" style="position:relative;padding:3px;width:250px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div id="playerlist_23_rank" style="position:relative;padding:3px;width:100px;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">-</div>
+                    <div id="playerlist_23_mainrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:5px;width:fit-content;font-size:18px;font-weight:bold;">/</div>
+                    <div id="playerlist_23_offrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div onclick="close_player(23)" style="position:absolute;padding:3px;right:5px;height:15px;width:15px;border:2px solid #000;font-size:13px;font-weight:bold;display:flex;justify-content:center;align-items:center;line-height:12px;cursor:pointer;">✖</div>
+                </div>
+                
+                <div id="playerlist_24" style="position:relative;height:0px;width:630px;pointer-events:none;background-color:orange;margin-top:10px;margin-left:10px;color:#000;font-family:'Staatliches';font-size:30px;box-shadow:0px 0px 4px rgba(128, 128, 128, 0.5);display:flex;align-items:center;">
+                    <div id="playerlist_24_name" style="position:relative;padding:3px;width:250px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div id="playerlist_24_rank" style="position:relative;padding:3px;width:100px;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">-</div>
+                    <div id="playerlist_24_mainrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:5px;width:fit-content;font-size:18px;font-weight:bold;">/</div>
+                    <div id="playerlist_24_offrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div onclick="close_player(24)" style="position:absolute;padding:3px;right:5px;height:15px;width:15px;border:2px solid #000;font-size:13px;font-weight:bold;display:flex;justify-content:center;align-items:center;line-height:12px;cursor:pointer;">✖</div>
+                </div>
+
+                
+                <div id="playerlist_25" style="position:relative;height:0px;width:630px;pointer-events:none;background-color:orange;margin-top:10px;margin-left:10px;color:#000;font-family:'Staatliches';font-size:30px;box-shadow:0px 0px 4px rgba(128, 128, 128, 0.5);display:flex;align-items:center;">
+                    <div id="playerlist_25_name" style="position:relative;padding:3px;width:250px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div id="playerlist_25_rank" style="position:relative;padding:3px;width:100px;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">-</div>
+                    <div id="playerlist_25_mainrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:5px;width:fit-content;font-size:18px;font-weight:bold;">/</div>
+                    <div id="playerlist_25_offrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div onclick="close_player(25)" style="position:absolute;padding:3px;right:5px;height:15px;width:15px;border:2px solid #000;font-size:13px;font-weight:bold;display:flex;justify-content:center;align-items:center;line-height:12px;cursor:pointer;">✖</div>
+                </div>
+
+                                
+                <div id="playerlist_26" style="position:relative;height:0px;width:630px;pointer-events:none;background-color:orange;margin-top:10px;margin-left:10px;color:#000;font-family:'Staatliches';font-size:30px;box-shadow:0px 0px 4px rgba(128, 128, 128, 0.5);display:flex;align-items:center;">
+                    <div id="playerlist_26_name" style="position:relative;padding:3px;width:250px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div id="playerlist_26_rank" style="position:relative;padding:3px;width:100px;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">-</div>
+                    <div id="playerlist_26_mainrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:5px;width:fit-content;font-size:18px;font-weight:bold;">/</div>
+                    <div id="playerlist_26_offrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div onclick="close_player(26)" style="position:absolute;padding:3px;right:5px;height:15px;width:15px;border:2px solid #000;font-size:13px;font-weight:bold;display:flex;justify-content:center;align-items:center;line-height:12px;cursor:pointer;">✖</div>
+                </div>
+
+                <div id="playerlist_27" style="position:relative;height:0px;width:630px;pointer-events:none;background-color:orange;margin-top:10px;margin-left:10px;color:#000;font-family:'Staatliches';font-size:30px;box-shadow:0px 0px 4px rgba(128, 128, 128, 0.5);display:flex;align-items:center;">
+                    <div id="playerlist_27_name" style="position:relative;padding:3px;width:250px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div id="playerlist_27_rank" style="position:relative;padding:3px;width:100px;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">-</div>
+                    <div id="playerlist_27_mainrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:5px;width:fit-content;font-size:18px;font-weight:bold;">/</div>
+                    <div id="playerlist_27_offrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div onclick="close_player(27)" style="position:absolute;padding:3px;right:5px;height:15px;width:15px;border:2px solid #000;font-size:13px;font-weight:bold;display:flex;justify-content:center;align-items:center;line-height:12px;cursor:pointer;">✖</div>
+                </div>
+
+
+                <div id="playerlist_28" style="position:relative;height:0px;width:630px;pointer-events:none;background-color:orange;margin-top:10px;margin-left:10px;color:#000;font-family:'Staatliches';font-size:30px;box-shadow:0px 0px 4px rgba(128, 128, 128, 0.5);display:flex;align-items:center;">
+                    <div id="playerlist_28_name" style="position:relative;padding:3px;width:250px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div id="playerlist_28_rank" style="position:relative;padding:3px;width:100px;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">-</div>
+                    <div id="playerlist_28_mainrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:5px;width:fit-content;font-size:18px;font-weight:bold;">/</div>
+                    <div id="playerlist_28_offrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div onclick="close_player(28)" style="position:absolute;padding:3px;right:5px;height:15px;width:15px;border:2px solid #000;font-size:13px;font-weight:bold;display:flex;justify-content:center;align-items:center;line-height:12px;cursor:pointer;">✖</div>
+                </div>
+
+                <div id="playerlist_29" style="position:relative;height:0px;width:630px;pointer-events:none;background-color:orange;margin-top:10px;margin-left:10px;color:#000;font-family:'Staatliches';font-size:30px;box-shadow:0px 0px 4px rgba(128, 128, 128, 0.5);display:flex;align-items:center;">
+                    <div id="playerlist_29_name" style="position:relative;padding:3px;width:250px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div id="playerlist_29_rank" style="position:relative;padding:3px;width:100px;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">-</div>
+                    <div id="playerlist_29_mainrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:5px;width:fit-content;font-size:18px;font-weight:bold;">/</div>
+                    <div id="playerlist_29_offrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div onclick="close_player(29)" style="position:absolute;padding:3px;right:5px;height:15px;width:15px;border:2px solid #000;font-size:13px;font-weight:bold;display:flex;justify-content:center;align-items:center;line-height:12px;cursor:pointer;">✖</div>
+                </div>
+
+                <div id="playerlist_30" style="position:relative;height:0px;width:630px;pointer-events:none;background-color:orange;margin-top:10px;margin-left:10px;color:#000;font-family:'Staatliches';font-size:30px;box-shadow:0px 0px 4px rgba(128, 128, 128, 0.5);display:flex;align-items:center;">
+                    <div id="playerlist_30_name" style="position:relative;padding:3px;width:250px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div id="playerlist_30_rank" style="position:relative;padding:3px;width:100px;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">-</div>
+                    <div id="playerlist_30_mainrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:5px;width:fit-content;font-size:18px;font-weight:bold;">/</div>
+                    <div id="playerlist_30_offrole" style="position:relative;padding:3px;width:fit-content;font-size:18px;font-weight:bold;">  </div>
+                    <div style="position:relative;padding:3px;margin-left:5px;margin-right:10px;width:fit-content;">|</div>
+                    <div onclick="close_player(30);" style="position:absolute;padding:3px;right:5px;height:15px;width:15px;border:2px solid #000;font-size:13px;font-weight:bold;display:flex;justify-content:center;align-items:center;line-height:12px;cursor:pointer;">✖</div>
+                </div>
+            </div>
+            <div onclick="TG()" style="position:absolute;bottom:-2px;right:-220px;width:200px;height:80px;border:2px solid orange;font-family:'Staatliches';font-size:100px;line-height:100px;font-weight:bold;color:#000;-webkit-text-stroke-color:orange;-webkit-text-stroke-width:1px;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+                <span style="position:absolute;padding-top:10px;right:10px;text-shadow:0px 0px 4px orange;">></span>
+                <span style="position:absolute;left:10px;font-size:32px;line-height:30px;">Team <br> Generator</span>
+            </div>
+            <div style="position:absolute;bottom:-2px;left:-320px;width:300px;height:650px;border:2px solid orange;font-family:'Staatliches';font-size:20px;line-height:AUTO;font-weight:bold;color:orange;overflow:auto;">
+               <div style="position:relative;margin:10px;width:270px;height:40px;background-color:orange;color:#000;font-size:35px;display:flex;justify-content:center;align-items:center;">How to use</div> 
+               <div style="position:relative;margin:10px;width:280px;height:fit-content;font-weight:normal;">
+                    1. Enter Players either one by one or via player list. <br> <br>
+                    2. Click on 'Team Generator' then on 'Generate Teams'. (Allow a few seconds for the program to load!)<br> <br>
+                    3. Enjoy your generated matchup!<br><br>
+                </div>
+                <div style="position:relative;margin:10px;width:270px;height:40px;background-color:orange;color:#000;font-size:35px;display:flex;justify-content:center;align-items:center;">Player Lists</div> 
+                <div style="position:relative;margin:10px;width:280px;height:fit-content;font-weight:normal;">
+                    1. One player per line. <br> <br> 
+                    2. Do not include any spaces in the player name. <br> <br> 
+                    3. Ranks must be abbreviated. Do not include LP. (Bronze 1 = B1, Plat 2 = P2, Grandmaster = GM, Challenger = C) <br> <br>
+                    4. Main Role and off role must also be abbreviated. <br> <br>
+                    5. Example Formatting: <br>
+                    Player1 G3 TOP MID <br>
+                    Player2 S2 JNG ADC <br>
+                 </div>      
+            </div>
+        </div>
+        <div id="TG" style="position:absolute;margin-top:250px;height:650px;width:710px;margin-left:3000px;border:2px solid orange;user-select:none;">
+            <div onclick="AP()" style="position:absolute;bottom:-2px;left:-220px;width:200px;height:80px;border:2px solid orange;font-family:'Staatliches';font-size:100px;line-height:100px;font-weight:bold;color:#000;-webkit-text-stroke-color:orange;-webkit-text-stroke-width:1px;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+                <span style="position:absolute;padding-top:10px;left:10px;text-shadow:0px 0px 4px orange;">&lt;</span>
+                <span style="position:absolute;right:10px;font-size:32px;line-height:30px;">Import <br> Players</span>
+            </div>
+            <div onclick="reset()" style="position:absolute;bottom:-2px;right:-220px;width:200px;height:80px;border:2px solid orange;font-family:'Staatliches';font-size:100px;line-height:100px;font-weight:bold;color:#000;-webkit-text-stroke-color:orange;-webkit-text-stroke-width:1px;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+                <span style="position:absolute;font-size:32px;line-height:30px;">RESET</span>
+            </div>
+            <div style="position:absolute;bottom:100px;right:-218px;width:200px;height:50px;background-color:orange;font-family:'Staatliches';font-size:100px;line-height:100px;font-weight:bold;color:#000;text-shadow:2px 2px 2px #000;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+                <span id="balance_meter" style="position:absolute;font-size:32px;line-height:30px;"></span>
+            </div>
+            <div onclick="generate_teams()" style="position:absolute;bottom:10px;left:150px;width:400px;height:70px;border:2px solid orange;font-family:'Staatliches';font-size:100px;line-height:100px;font-weight:bold;color:#000;-webkit-text-stroke-color:orange;-webkit-text-stroke-width:1px;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+                <span style="position:absolute;font-size:40px;line-height:30px;text-align:center;">Generate  Teams</span>
+            </div>
+                <div id="t1_top" class="player" style="left:0px;">
+                    <div style="position:absolute;background-image:url('https://i.imgur.com/sLHlEP6.png');height:50px;width:50px;background-size:100%;"></div>
+                    <div id="t1_top_name" style="position:absolute;top:0px;left:5px;font-size:35px;font-style:italic;"></div>
+                    <div id="t1_top_rank" style="position:absolute;bottom:0px;left:5px;font-size:30px;"></div>
+                    <div id="t1_top_roles" style="position:absolute;bottom:0px;right:5px;font-size:20px;"></div>
+                </div>
+                <div id="t2_top" class="player" style="right:0px;">
+                    <div style="position:absolute;background-image:url('https://i.imgur.com/sLHlEP6.png');height:50px;width:50px;background-size:100%;"></div>
+                    <div id="t2_top_name" style="position:absolute;top:0px;right:5px;font-size:35px;font-style:italic;"></div>
+                    <div id="t2_top_rank" style="position:absolute;bottom:0px;left:5px;font-size:30px;"></div>
+                    <div id="t2_top_roles" style="position:absolute;bottom:0px;right:5px;font-size:20px;"></div>
+                </div>
+                <div id="t1_jng" class="player" style="left:0px;top:110px;">
+                    <div style="position:absolute;background-image:url('https://i.imgur.com/6giQZ0Y.png');height:50px;width:50px;background-size:100%;"></div>
+                    <div id="t1_jng_name" style="position:absolute;top:0px;left:5px;font-size:35px;font-style:italic;"></div>
+                    <div id="t1_jng_rank" style="position:absolute;bottom:0px;left:5px;font-size:30px;"></div>
+                    <div id="t1_jng_roles" style="position:absolute;bottom:0px;right:5px;font-size:20px;"></div>
+                </div>
+                <div id="t2_jng" class="player" style="right:0px;top:110px;">
+                    <div style="position:absolute;background-image:url('https://i.imgur.com/6giQZ0Y.png');height:50px;width:50px;background-size:100%;"></div>
+                    <div id="t2_jng_name" style="position:absolute;top:0px;right:5px;font-size:35px;font-style:italic;"></div>
+                    <div id="t2_jng_rank" style="position:absolute;bottom:0px;left:5px;font-size:30px;"></div>
+                    <div id="t2_jng_roles" style="position:absolute;bottom:0px;right:5px;font-size:20px;"></div>
+                </div>
+                <div id="t1_mid" class="player" style="left:0px;top:220px;">
+                    <div style="position:absolute;background-image:url('https://i.imgur.com/AazRL7C.png');height:50px;width:50px;background-size:100%;"></div>
+                    <div id="t1_mid_name" style="position:absolute;top:0px;left:5px;font-size:35px;font-style:italic;"></div>
+                    <div id="t1_mid_rank" style="position:absolute;bottom:0px;left:5px;font-size:30px;"></div>
+                    <div id="t1_mid_roles" style="position:absolute;bottom:0px;right:5px;font-size:20px;"></div>
+                </div>
+                <div id="t2_mid" class="player" style="right:0px;top:220px;">
+                    <div style="position:absolute;background-image:url('https://i.imgur.com/AazRL7C.png');height:50px;width:50px;background-size:100%;"></div>
+                    <div id="t2_mid_name" style="position:absolute;top:0px;right:5px;font-size:35px;font-style:italic;"></div>
+                    <div id="t2_mid_rank" style="position:absolute;bottom:0px;left:5px;font-size:30px;"></div>
+                    <div id="t2_mid_roles" style="position:absolute;bottom:0px;right:5px;font-size:20px;"></div>
+                </div>
+                <div id="t1_adc" class="player" style="left:0px;top:330px;">
+                    <div style="position:absolute;background-image:url('https://i.imgur.com/fzJrVqu.png');height:50px;width:50px;background-size:100%;"></div>
+                    <div id="t1_adc_name" style="position:absolute;top:0px;left:5px;font-size:35px;font-style:italic;"></div>
+                    <div id="t1_adc_rank" style="position:absolute;bottom:0px;left:5px;font-size:30px;"></div>
+                    <div id="t1_adc_roles" style="position:absolute;bottom:0px;right:5px;font-size:20px;"></div>
+                </div>
+                <div id="t2_adc" class="player" style="right:0px;top:330px;">
+                    <div style="position:absolute;background-image:url('https://i.imgur.com/fzJrVqu.png');height:50px;width:50px;background-size:100%;"></div>
+                    <div id="t2_adc_name" style="position:absolute;top:0px;right:5px;font-size:35px;font-style:italic;"></div>
+                    <div id="t2_adc_rank" style="position:absolute;bottom:0px;left:5px;font-size:30px;"></div>
+                    <div id="t2_adc_roles" style="position:absolute;bottom:0px;right:5px;font-size:20px;"></div>
+                </div>
+                <div id="t1_sup" class="player" style="left:0px;top:440px;">
+                    <div style="position:absolute;background-image:url('https://i.imgur.com/nGAjPUd.png');height:50px;width:50px;background-size:100%;"></div>
+                    <div id="t1_sup_name" style="position:absolute;top:0px;left:5px;font-size:35px;font-style:italic;"></div>
+                    <div id="t1_sup_rank" style="position:absolute;bottom:0px;left:5px;font-size:30px;"></div>
+                    <div id="t1_sup_roles" style="position:absolute;bottom:0px;right:5px;font-size:20px;"></div>
+                </div>
+                <div id="t2_sup" class="player" style="right:0px;top:440px;">
+                    <div style="position:absolute;background-image:url('https://i.imgur.com/nGAjPUd.png');height:50px;width:50px;background-size:100%;"></div>
+                    <div id="t2_sup_name" style="position:absolute;top:0px;right:5px;font-size:35px;font-style:italic;"></div>
+                    <div id="t2_sup_rank" style="position:absolute;bottom:0px;left:5px;font-size:30px;"></div>
+                    <div id="t2_sup_roles" style="position:absolute;bottom:0px;right:5px;font-size:20px;"></div>
+                </div>
+            </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>
+            var player_list = [];
+            var current_player = 1;
+            var player_name = [];
+            var player_rank = [];
+            var player_mainrole = [];
+            var player_offrole =[];
+            var player_count = 0;
+            let player = [];
             var players = [];
-            var player = [];
-            var player_score = [];
             var team_one = ["TOP", "JNG", "MID", "ADC", "SUP"];
             var team_two = ["TOP", "JNG", "MID", "ADC", "SUP"];
             var team_one_score = [];
             var team_two_score = [];
             var team_catalog = [];
-            let closest = 0;
+            var closest = 0;
             var balance_scores = [];
             var strictness = 1;
+            var first_found = 0;
             var matchup_generated = 0;
-            function import_players(){
-                $('#strictness_meter').css({'width':strictness + '%'});
-                var players = $('#player_list').val().split('\n');
-                for (let i = 0; i < (players.length*100); i++) {
-                    shuffle(players);
-                    for (let i = 0; i < players.length; i++) {
-                        player[i] = players[i].split(" ");
-                            if (player[i][1] == "I4"){player[i].push("1")}
-                        else if (player[i][1] == "I3"){player[i].push("2")}
-                        else if (player[i][1] == "I2"){player[i].push("3")}
-                        else if (player[i][1] == "I1"){player[i].push("4")}
-                        else if (player[i][1] == "B4"){player[i].push("7")}
-                        else if (player[i][1] == "B3"){player[i].push("8")}
-                        else if (player[i][1] == "B2"){player[i].push("9")}
-                        else if (player[i][1] == "B1"){player[i].push("10")}
-                        else if (player[i][1] == "S4"){player[i].push("12")}
-                        else if (player[i][1] == "S3"){player[i].push("14")}
-                        else if (player[i][1] == "S2"){player[i].push("16")}
-                        else if (player[i][1] == "S1"){player[i].push("18")}
-                        else if (player[i][1] == "G4"){player[i].push("20")}
-                        else if (player[i][1] == "G3"){player[i].push("24")}
-                        else if (player[i][1] == "G2"){player[i].push("28")}
-                        else if (player[i][1] == "G1"){player[i].push("32")}
-                        else if (player[i][1] == "P4"){player[i].push("38")}
-                        else if (player[i][1] == "P3"){player[i].push("44")}
-                        else if (player[i][1] == "P2"){player[i].push("50")}
-                        else if (player[i][1] == "P1"){player[i].push("56")}
-                        else if (player[i][1] == "D4"){player[i].push("70")}
-                        else if (player[i][1] == "D3"){player[i].push("90")}
-                        else if (player[i][1] == "D2"){player[i].push("120")}
-                        else if (player[i][1] == "D1"){player[i].push("150")}
-                        else if (player[i][1] == "M") {player[i].push("200")}
-                        else if (player[i][1] == "GM"){player[i].push("300")}
-                        else if (player[i][1] == "C") {player[i].push("400")}
+            var first_check = 0;
+            function add_player(a){
+                if (current_player == 31){
+                    alert('ERROR: 30 Players is the current limit.');
+                    return;
+                }else{}
+                if ($('#player_name').val() === $('#playerlist_' + ((a) - 1) + '_name').html()){
+                    alert('Accidental Double Entry Protection Triggered: Please make sure players have different names to avoid confusion.');
+                    return;
+                }else{}
+                if (($('#player_name').val().length) === 0){
+                    alert('ERROR: Player must be given a name!');
+                    return;
+                }else{
+                    if (($('#player_mainrole').val()) === ($('#player_offrole').val())){
+                        alert('ERROR: Player Main role and off role can not be the same.');
+                        return;
+                    }else{
+                        $('#playerlist_' + a + '_name').html($('#player_name').val());
+                        player_name = $('#player_name').val();
+                        if ($('#player_rank').val() == 0 ){$('#playerlist_' + a + '_rank').html('Iron 4');player_rank = "I4";}
+                        else if ($('#player_rank').val() == 1 ){$('#playerlist_' + a + '_rank').html('Iron 3');player_rank = "I3";}
+                        else if ($('#player_rank').val() == 2 ){$('#playerlist_' + a + '_rank').html('Iron 2');player_rank = "I2";}
+                        else if ($('#player_rank').val() == 3 ){$('#playerlist_' + a + '_rank').html('Iron 1');player_rank = "I1";}
+                        else if ($('#player_rank').val() == 4 ){$('#playerlist_' + a + '_rank').html('Bronze 4');player_rank = "B4";}
+                        else if ($('#player_rank').val() == 5 ){$('#playerlist_' + a + '_rank').html('Bronze 3');player_rank = "B3";}
+                        else if ($('#player_rank').val() == 6 ){$('#playerlist_' + a + '_rank').html('Bronze 2');player_rank = "B2";}
+                        else if ($('#player_rank').val() == 7 ){$('#playerlist_' + a + '_rank').html('Bronze 1');player_rank = "B1";}
+                        else if ($('#player_rank').val() == 8 ){$('#playerlist_' + a + '_rank').html('Silver 4');player_rank = "S4";}
+                        else if ($('#player_rank').val() == 9 ){$('#playerlist_' + a + '_rank').html('Silver 3');player_rank = "S3";}
+                        else if ($('#player_rank').val() == 10 ){$('#playerlist_' + a + '_rank').html('Silver 2');player_rank = "S2";}
+                        else if ($('#player_rank').val() == 11 ){$('#playerlist_' + a + '_rank').html('Silver 1');player_rank = "S1";}
+                        else if ($('#player_rank').val() == 12 ){$('#playerlist_' + a + '_rank').html('Gold 4');player_rank = "G4";}
+                        else if ($('#player_rank').val() == 13 ){$('#playerlist_' + a + '_rank').html('Gold 3');player_rank = "G3";}
+                        else if ($('#player_rank').val() == 14 ){$('#playerlist_' + a + '_rank').html('Gold 2');player_rank = "G2";}
+                        else if ($('#player_rank').val() == 15 ){$('#playerlist_' + a + '_rank').html('Gold 1');player_rank = "G1";}
+                        else if ($('#player_rank').val() == 16 ){$('#playerlist_' + a + '_rank').html('Plat 4');player_rank = "P4";}
+                        else if ($('#player_rank').val() == 17 ){$('#playerlist_' + a + '_rank').html('Plat 3');player_rank = "P3";}
+                        else if ($('#player_rank').val() == 18 ){$('#playerlist_' + a + '_rank').html('Plat 2');player_rank = "P2";}
+                        else if ($('#player_rank').val() == 19 ){$('#playerlist_' + a + '_rank').html('Plat 1');player_rank = "P1";}
+                        else if ($('#player_rank').val() == 20 ){$('#playerlist_' + a + '_rank').html('Diamond 4');player_rank = "D4";}
+                        else if ($('#player_rank').val() == 21 ){$('#playerlist_' + a + '_rank').html('Diamond 3');player_rank = "D3";}
+                        else if ($('#player_rank').val() == 22 ){$('#playerlist_' + a + '_rank').html('Diamond 2');player_rank = "D2";}
+                        else if ($('#player_rank').val() == 23 ){$('#playerlist_' + a + '_rank').html('Diamond 1');player_rank = "D1";}
+                        else if ($('#player_rank').val() == 24 ){$('#playerlist_' + a + '_rank').html('Master');player_rank = "M";}
+                        else if ($('#player_rank').val() == 25 ){$('#playerlist_' + a + '_rank').html('Grandmaster');player_rank = "GM";}
+                        else if ($('#player_rank').val() == 26 ){$('#playerlist_' + a + '_rank').html('Challenger');player_rank = "C";}
+                        else{ return; }
+                        if ($('#player_mainrole').val() == 0){$('#playerlist_' + a + '_mainrole').html('TOP');player_mainrole = "TOP";}
+                        else if ($('#player_mainrole').val() == 1){$('#playerlist_' + a + '_mainrole').html('JNG');player_mainrole = "JNG";}
+                        else if ($('#player_mainrole').val() == 2){$('#playerlist_' + a + '_mainrole').html('MID');player_mainrole = "MID";}
+                        else if ($('#player_mainrole').val() == 3){$('#playerlist_' + a + '_mainrole').html('ADC');player_mainrole = "ADC";}
+                        else if ($('#player_mainrole').val() == 4){$('#playerlist_' + a + '_mainrole').html('SUP');player_mainrole = "SUP";}
+                        else{ return; }
+                        if ($('#player_offrole').val() == 0){$('#playerlist_' + a + '_offrole').html('TOP');player_offrole = "TOP";}
+                        else if ($('#player_offrole').val() == 1){$('#playerlist_' + a + '_offrole').html('JNG');player_offrole = "JNG";}
+                        else if ($('#player_offrole').val() == 2){$('#playerlist_' + a + '_offrole').html('MID');player_offrole = "MID";}
+                        else if ($('#player_offrole').val() == 3){$('#playerlist_' + a + '_offrole').html('ADC');player_offrole = "ADC";}
+                        else if ($('#player_offrole').val() == 4){$('#playerlist_' + a + '_offrole').html('TOP');player_offrole = "SUP";}
+                        else{ return; }
+                        $("#playerlist_" + a).css({'transition':'all 0.5s','height':'30px','pointer-events':'all', 'z-index':'1'});
+                        player.push([(player_name), (player_rank), (player_mainrole), (player_offrole)]);
+                        console.log(player);
+                        console.log("playerlist_"+ a);
+                        current_player++;
+                        player_count++;
+                        if (player_count >= 10){
+                            $('#player_count').html(player_count + "/30");
+                            $('#player_count').css({'color':'green'});
+                        } else {
+                            $('#player_count').html(player_count + "/30");
+                            $('#player_count').css({'color':'red'});
+                        }
+                    }
+                }
+            }
+            function AP(){
+                $('#TG').css({'transition':'all 1s','margin-left':'3000px'});
+                $('#AP').css({'transition':'all 1s','margin-left':'0px'});
+            }
+            function TG(){
+                $('#AP').css({'transition':'all 1s','margin-left':'-3000px'});
+                $('#TG').css({'transition':'all 1s','margin-left':'0px'});
+            }
+
+            function generate_teams(){
+                players = JSON.parse(JSON.stringify(player));
+                if (player.length < 10){
+                    alert('Minimum 10 Players Required');
+                    return;
+                }else{} 
+                for (let i = 0; i < (player.length*100); i++) {
+                    shuffle(player);                    shuffle(player);                    shuffle(player);
+                    for (let i = 0; i < player.length; i++) {
+                            if ((player[i][1] == "I4")&&(player[i][4] == undefined)){player[i].push("1")}
+                        else if ((player[i][1] == "I3")&&(player[i][4] == undefined)){player[i].push("2")}
+                        else if ((player[i][1] == "I2")&&(player[i][4] == undefined)){player[i].push("3")}
+                        else if ((player[i][1] == "I1")&&(player[i][4] == undefined)){player[i].push("4")}
+                        else if ((player[i][1] == "B4")&&(player[i][4] == undefined)){player[i].push("7")}
+                        else if ((player[i][1] == "B3")&&(player[i][4] == undefined)){player[i].push("8")}
+                        else if ((player[i][1] == "B2")&&(player[i][4] == undefined)){player[i].push("9")}
+                        else if ((player[i][1] == "B1")&&(player[i][4] == undefined)){player[i].push("10")}
+                        else if ((player[i][1] == "S4")&&(player[i][4] == undefined)){player[i].push("12")}
+                        else if ((player[i][1] == "S3")&&(player[i][4] == undefined)){player[i].push("14")}
+                        else if ((player[i][1] == "S2")&&(player[i][4] == undefined)){player[i].push("16")}
+                        else if ((player[i][1] == "S1")&&(player[i][4] == undefined)){player[i].push("18")}
+                        else if ((player[i][1] == "G4")&&(player[i][4] == undefined)){player[i].push("20")}
+                        else if ((player[i][1] == "G3")&&(player[i][4] == undefined)){player[i].push("24")}
+                        else if ((player[i][1] == "G2")&&(player[i][4] == undefined)){player[i].push("28")}
+                        else if ((player[i][1] == "G1")&&(player[i][4] == undefined)){player[i].push("32")}
+                        else if ((player[i][1] == "P4")&&(player[i][4] == undefined)){player[i].push("38")}
+                        else if ((player[i][1] == "P3")&&(player[i][4] == undefined)){player[i].push("44")}
+                        else if ((player[i][1] == "P2")&&(player[i][4] == undefined)){player[i].push("50")}
+                        else if ((player[i][1] == "P1")&&(player[i][4] == undefined)){player[i].push("56")}
+                        else if ((player[i][1] == "D4")&&(player[i][4] == undefined)){player[i].push("60")}
+                        else if ((player[i][1] == "D3")&&(player[i][4] == undefined)){player[i].push("70")}
+                        else if ((player[i][1] == "D2")&&(player[i][4] == undefined)){player[i].push("80")}
+                        else if ((player[i][1] == "D1")&&(player[i][4] == undefined)){player[i].push("90")}
+                        else if ((player[i][1] == "M")&&(player[i][4] == undefined)){player[i].push("110")}
+                        else if ((player[i][1] == "GM")&&(player[i][4] == undefined)){player[i].push("130")}
+                        else if ((player[i][1] == "C")&&(player[i][4] == undefined)){player[i].push("150")}
                         else{};
                     }
-                    for (let i = 0; i < players.length; i++) {
+                    for (let i = 0; i < player.length; i++) {
                         if ((player[i][2] == "TOP") && (team_one[0] == "TOP")){team_one[0] = (player[i])}
                         else if ((player[i][2] == "TOP") && (team_two[0] == "TOP") && (((player[i][4]) - (team_one[0][4]) > -strictness) && ((player[i][4]) - (team_one[0][4]) < strictness))){team_two[0] = (player[i])} 
                         else if ((player[i][2] == "JNG") && (team_one[1] == "JNG")){team_one[1] = (player[i])}
@@ -184,53 +819,56 @@
                         else if ((player[i][2] == "SUP") && (team_one[4] == "SUP")){team_one[4] = (player[i])}
                         else if ((player[i][2] == "SUP") && (team_two[4] == "SUP") && (((player[i][4]) - (team_one[4][4]) > -strictness) && ((player[i][4]) - (team_one[0][4]) < strictness))){team_two[4] = (player[i])}
 
-                        else if ((player[i][3] == "TOP") && (team_one[0] == "TOP")){player[i][4] = (player[i][4]) - (player[i][4] * 0.2), team_one[0] = (player[i])}
+                        else if ((player[i][3] == "TOP") && (team_one[0] == "TOP")){player[i][4] = (player[i][4]) - (player[i][4] * 0.2); team_one[0] = (player[i])}
                         else if ((player[i][3] == "TOP") && (team_two[0] == "TOP") && (((player[i][4]) - (team_one[0][4]) > -strictness) && ((player[i][4]) - (team_one[0][4]) < strictness))){player[i][4] = (player[i][4]) - (player[i][4] * 0.2), team_two[0] = (player[i])} 
-                        else if ((player[i][3] == "JNG") && (team_one[1] == "JNG")){player[i][4] = (player[i][4]) - (player[i][4] * 0.2), team_one[1] = (player[i])}
+                        else if ((player[i][3] == "JNG") && (team_one[1] == "JNG")){player[i][4] = (player[i][4]) - (player[i][4] * 0.2); team_one[1] = (player[i])}
                         else if ((player[i][3] == "JNG") && (team_two[1] == "JNG") && (((player[i][4]) - (team_one[1][4]) > -strictness) && ((player[i][4]) - (team_one[1][4]) < strictness))){player[i][4] = (player[i][4]) - (player[i][4] * 0.2), team_two[1] = (player[i])}
-                        else if ((player[i][3] == "MID") && (team_one[2] == "MID")){player[i][4] = (player[i][4]) - (player[i][4] * 0.2), team_one[2] = (player[i])}
+                        else if ((player[i][3] == "MID") && (team_one[2] == "MID")){player[i][4] = (player[i][4]) - (player[i][4] * 0.2); team_one[2] = (player[i])}
                         else if ((player[i][3] == "MID") && (team_two[2] == "MID") && (((player[i][4]) - (team_one[2][4]) > -strictness) && ((player[i][4]) - (team_one[2][4]) < strictness))){player[i][4] = (player[i][4]) - (player[i][4] * 0.2), team_two[2] = (player[i])}
-                        else if ((player[i][3] == "ADC") && (team_one[3] == "ADC")){player[i][4] = (player[i][4]) - (player[i][4] * 0.2), team_one[3] = (player[i])}
+                        else if ((player[i][3] == "ADC") && (team_one[3] == "ADC")){player[i][4] = (player[i][4]) - (player[i][4] * 0.2); team_one[3] = (player[i])}
                         else if ((player[i][3] == "ADC") && (team_two[3] == "ADC") && (((player[i][4]) - (team_one[3][4]) > -strictness) && ((player[i][4]) - (team_one[3][4]) < strictness))){player[i][4] = (player[i][4]) - (player[i][4] * 0.2), team_two[3] = (player[i])}
-                        else if ((player[i][3] == "SUP") && (team_one[4] == "SUP")){player[i][4] = (player[i][4]) - (player[i][4] * 0.2), team_one[4] = (player[i])}
+                        else if ((player[i][3] == "SUP") && (team_one[4] == "SUP")){player[i][4] = (player[i][4]) - (player[i][4] * 0.2); team_one[4] = (player[i])}
                         else if ((player[i][3] == "SUP") && (team_two[4] == "SUP") && (((player[i][4]) - (team_one[4][4]) > -strictness) && ((player[i][4]) - (team_one[4][4]) < strictness))){player[i][4] = (player[i][4]) - (player[i][4] * 0.2), team_two[4] = (player[i])}
                         
-                        else if ((player[i][2] != "SUP") && (player[i][3] != "SUP") && (team_one[0] == "SUP")){player[i][4] = (player[i][4]) - (player[i][4] * 0.5), team_one[4] = (player[i])}
+                        else if ((player[i][2] != "SUP") && (player[i][3] != "SUP") && (team_one[0] == "SUP")){player[i][4] = (player[i][4]) - (player[i][4] * 0.5); team_one[4] = (player[i])}
                         else if ((player[i][2] != "SUP") && (player[i][3] != "SUP") && (team_two[0] == "SUP") && (((player[i][4]) - (player[i][4] * 0.5)) - (team_one[4][4]) > -strictness) && (((player[i][4]) - (player[i][4] * 0.5)) - (team_one[4][4]) < strictness)){player[i][4] = (player[i][4]) - (player[i][4] * 0.5), team_two[4] = (player[i])}
-                        else if ((player[i][2] != "JNG") && (player[i][3] != "JNG") && (team_one[0] == "JNG")){player[i][4] = (player[i][4]) - (player[i][4] * 0.5), team_one[1] = (player[i])}
+                        else if ((player[i][2] != "JNG") && (player[i][3] != "JNG") && (team_one[0] == "JNG")){player[i][4] = (player[i][4]) - (player[i][4] * 0.5); team_one[1] = (player[i])}
                         else if ((player[i][2] != "JNG") && (player[i][3] != "JNG") && (team_two[0] == "JNG") && (((player[i][4]) - (player[i][4] * 0.5)) - (team_one[1][4]) > -strictness) && (((player[i][4]) - (player[i][4] * 0.5)) - (team_one[1][4]) < strictness)){player[i][4] = (player[i][4]) - (player[i][4] * 0.5), team_two[1] = (player[i])}
-                        else if ((player[i][2] != "TOP") && (player[i][3] != "TOP") && (team_one[0] == "TOP")){player[i][4] = (player[i][4]) - (player[i][4] * 0.5), team_one[0] = (player[i])}
+                        else if ((player[i][2] != "TOP") && (player[i][3] != "TOP") && (team_one[0] == "TOP")){player[i][4] = (player[i][4]) - (player[i][4] * 0.5); team_one[0] = (player[i])}
                         else if ((player[i][2] != "TOP") && (player[i][3] != "TOP") && (team_two[0] == "TOP") && (((player[i][4]) - (player[i][4] * 0.5)) - (team_one[0][4]) > -strictness) && (((player[i][4]) - (player[i][4] * 0.5)) - (team_one[0][4]) < strictness)){player[i][4] = (player[i][4]) - (player[i][4] * 0.5), team_two[0] = (player[i])}
-                        else if ((player[i][2] != "MID") && (player[i][3] != "MID") && (team_one[0] == "MID")){player[i][4] = (player[i][4]) - (player[i][4] * 0.5), team_one[2] = (player[i])}
+                        else if ((player[i][2] != "MID") && (player[i][3] != "MID") && (team_one[0] == "MID")){player[i][4] = (player[i][4]) - (player[i][4] * 0.5); team_one[2] = (player[i])}
                         else if ((player[i][2] != "MID") && (player[i][3] != "MID") && (team_two[0] == "MID") && (((player[i][4]) - (player[i][4] * 0.5)) - (team_one[2][4]) > -strictness) && (((player[i][4]) - (player[i][4] * 0.5)) - (team_one[2][4]) < strictness)){player[i][4] = (player[i][4]) - (player[i][4] * 0.5), team_two[2] = (player[i])}
-                        else if ((player[i][2] != "ADC") && (player[i][3] != "ADC") && (team_one[0] == "ADC")){player[i][4] = (player[i][4]) - (player[i][4] * 0.5), team_one[3] = (player[i])}
+                        else if ((player[i][2] != "ADC") && (player[i][3] != "ADC") && (team_one[0] == "ADC")){player[i][4] = (player[i][4]) - (player[i][4] * 0.5); team_one[3] = (player[i])}
                         else if ((player[i][2] != "ADC") && (player[i][3] != "ADC") && (team_two[0] == "ADC") && (((player[i][4]) - (player[i][4] * 0.5)) - (team_one[3][4]) > -strictness) && (((player[i][4]) - (player[i][4] * 0.5)) - (team_one[3][4]) < strictness)){player[i][4] = (player[i][4]) - (player[i][4] * 0.5), team_two[3] = (player[i])}
   
                         else{};
                     }
-                    matchup_generated++;
-                    $('#matchup_counter').html(matchup_generated + " Potential Teams Generated!");
                     if(((Math.abs((parseInt(team_one[0][4])) - (parseInt(team_two[0][4]))) + Math.abs((parseInt(team_one[1][4])) - (parseInt(team_two[1][4]))) + Math.abs((parseInt(team_one[2][4])) - (parseInt(team_two[2][4]))) + Math.abs((parseInt(team_one[3][4])) - (parseInt(team_two[3][4]))) + Math.abs((parseInt(team_one[4][4])) - (parseInt(team_two[4][4]))))) >= 0){
                     team_catalog.push ([((Math.abs((parseInt(team_one[0][4])) - (parseInt(team_two[0][4]))) + Math.abs((parseInt(team_one[1][4])) - (parseInt(team_two[1][4]))) + Math.abs((parseInt(team_one[2][4])) - (parseInt(team_two[2][4]))) + Math.abs((parseInt(team_one[3][4])) - (parseInt(team_two[3][4]))) + Math.abs((parseInt(team_one[4][4])) - (parseInt(team_two[4][4]))))), team_one, team_two]);
                     } else {}
-                    player = [];
-                    player_score = [];
                     team_one = ["TOP", "JNG", "MID", "ADC", "SUP"];
                     team_two = ["TOP", "JNG", "MID", "ADC", "SUP"];
-                    team_one_score = [];
-                    team_two_score = [];
-
+                    player = JSON.parse(JSON.stringify(players));
                 }
                 closestToZero();
-                function closestToZero() {                    
+            }
+                function closestToZero(){
+                    console.log('close attempt');
+                if (team_catalog.length < 1){
+                    strictness++;
+                    console.log('gen');
+                    generate_teams();
+                    return;
+                }
+                else if (team_catalog.length >= 1){  
+                    console.log('close attempt2'); 
                     for (let i = 0; i < team_catalog.length ; i++) {
-                        if (closest === 0) {
-                            closest = team_catalog[i][0];
-                        } else if (team_catalog[i][0] > 0 && team_catalog[i][0] <= Math.abs(closest)) {
+                        if (closest == 0) {
+                            closest = team_catalog[i];
+                        } else if (team_catalog[i][0] > 0 && team_catalog[i][0] < Math.abs(closest[0])) {
                             closest = team_catalog[i];
                         }
                     }
-                    
                     if (closest != 0){
                     $('#t1_top_name').html((closest[1][0][0]));
                     $('#t1_top_rank').html((closest[1][0][1]));
@@ -266,33 +904,130 @@
                     $('#t2_sup_name').html((closest[2][4][0]));
                     $('#t2_sup_rank').html((closest[2][4][1]));
                     $('#t2_sup_roles').html((closest[2][4][2]) + ", " + (closest[2][4][3]) + " " + (closest[2][4][4]));
+
+
+
                 }else{}
-
-
                 }
-                if (team_catalog.length === 0){
-                    strictness++;
-                    import_players_refresh();
-                    import_players();
-                }
-            }  
-            function shuffle(a){for(var j,i=a.length-1;i>0;i--){j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}}
+                    strictness_check();
+                    strictness_check();
+                    strictness_check();
+                    strictness_check();
+            } 
+           
+           
+        function shuffle(a){for(var j,i=a.length-1;i>0;i--){j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}}
 
-            function import_players_refresh(){
-                players = [];
-                player = [];
-                player_score = [];
-                team_one = ["TOP", "JNG", "MID", "ADC", "SUP"];
-                team_two = ["TOP", "JNG", "MID", "ADC", "SUP"];
-                team_one_score = [];
-                team_two_score = [];
-                team_catalog = [];
-                balance_scores = [];
-                closest = 0;
-                team_catalog = [];
-                import_players();
+        function strictness_check(){
+            console.log(strictness);
+            if (strictness <= 10){
+                        $('#balance_meter').html("Very Balanced!");
+                        $('#balance_meter').css({'color':'green'});
+                    } 
+                    else if ((strictness >= 11)&&(strictness <= 20)){
+                        $('#balance_meter').html("Well Balanced!");
+                        $('#balance_meter').css({'color':'green'});
+                    }
+                    else if ((strictness >= 21)&&(strictness <= 30)){
+                        $('#balance_meter').html("Decently Balanced!");
+                        $('#balance_meter').css({'color':'yellow'});
+                    } 
+                    else if ((strictness >= 31)&&(strictness <= 50)){
+                        $('#balance_meter').html("Somewhat Balanced...");
+                        $('#balance_meter').css({'color':'yellow'});
+                    } 
+                    else if (strictness >= 51){
+                        $('#balance_meter').html("we tried lol");
+                        $('#balance_meter').css({'color':'red'});
+                    } 
+        }
+            function close_player(a){
+                for (let i = (a-1); i < player.length; i++, a++) {
+                    if (player.length == 1 ){
+                        player.pop();
+                        
+                    }else{
+                        player[i] = player[(i+1)]
+                    }
+                    $('#playerlist_' + a).css("height", $('#playerlist_' + (a+1)).css("height"));
+                    $('#playerlist_' + a + '_name').html(($('#playerlist_' + (a+1) + '_name').html()));
+                    $('#playerlist_' + a + '_rank').html(($('#playerlist_' + (a+1) + '_rank').html()));
+                    $('#playerlist_' + a + '_mainrole').html(($('#playerlist_' + (a+1) + '_mainrole').html()));
+                    $('#playerlist_' + a + '_offrole').html(($('#playerlist_' + (a+1) + '_offrole').html()));
+                } 
+                player_count--;
+                current_player--;
+                player.pop();
+                if (player_count >= 10){
+                            $('#player_count').html(player_count + "/30");
+                            $('#player_count').css({'color':'green'});
+                        } else {
+                            $('#player_count').html(player_count + "/30");
+                            $('#player_count').css({'color':'red'});
+                        }      
             }
+            function add_player_list(){
+            players = $('#player_list_import').val().split('\n');
+                for (let i = (-1); i < (players.length - 1 ); i++) {
+                    console.log(i + current_player);
+                    
+                    player.push( players[(i + 1)].split(" ")); 
 
+                    $('#playerlist_' + (i + current_player + 1) + '_name').html(player[(i + current_player)][0]);
+                    if (player[(i + current_player)][1] == "I4" ){$('#playerlist_' + (i + current_player + 1) + '_rank').html('Iron 4');}
+                    else if (player[(i + current_player)][1] == "I3" ){$('#playerlist_' + (i + current_player + 1) + '_rank').html('Iron 3');}
+                    else if (player[(i + current_player)][1] == "I2" ){$('#playerlist_' + (i + current_player + 1) + '_rank').html('Iron 2');}
+                    else if (player[(i + current_player)][1] == "I1" ){$('#playerlist_' + (i + current_player + 1) + '_rank').html('Iron 1');}
+                    else if (player[(i + current_player)][1] == "B4" ){$('#playerlist_' + (i + current_player + 1) + '_rank').html('Bronze 4');}
+                    else if (player[(i + current_player)][1] == "B3" ){$('#playerlist_' + (i + current_player + 1) + '_rank').html('Bronze 3');}
+                    else if (player[(i + current_player)][1] == "B2" ){$('#playerlist_' + (i + current_player + 1) + '_rank').html('Bronze 2');}
+                    else if (player[(i + current_player)][1] == "B1" ){$('#playerlist_' + (i + current_player + 1) + '_rank').html('Bronze 1');}
+                    else if (player[(i + current_player)][1] == "S4" ){$('#playerlist_' + (i + current_player + 1) + '_rank').html('Silver 4');}
+                    else if (player[(i + current_player)][1] == "S3" ){$('#playerlist_' + (i + current_player + 1) + '_rank').html('Silver 3');}
+                    else if (player[(i + current_player)][1] == "S2" ){$('#playerlist_' + (i + current_player + 1) + '_rank').html('Silver 2');}
+                    else if (player[(i + current_player)][1] == "S1" ){$('#playerlist_' + (i + current_player + 1) + '_rank').html('Silver 1');}
+                    else if (player[(i + current_player)][1] == "G4" ){$('#playerlist_' + (i + current_player + 1) + '_rank').html('Gold 4');}
+                    else if (player[(i + current_player)][1] == "G3" ){$('#playerlist_' + (i + current_player + 1) + '_rank').html('Gold 3');}
+                    else if (player[(i + current_player)][1] == "G2" ){$('#playerlist_' + (i + current_player + 1) + '_rank').html('Gold 2');}
+                    else if (player[(i + current_player)][1] == "G1" ){$('#playerlist_' + (i + current_player + 1) + '_rank').html('Gold 1');}
+                    else if (player[(i + current_player)][1] == "P4" ){$('#playerlist_' + (i + current_player + 1) + '_rank').html('Plat 4');}
+                    else if (player[(i + current_player)][1] == "P3" ){$('#playerlist_' + (i + current_player + 1) + '_rank').html('Plat 3');}
+                    else if (player[(i + current_player)][1] == "P2" ){$('#playerlist_' + (i + current_player + 1) + '_rank').html('Plat 2');}
+                    else if (player[(i + current_player)][1] == "P1" ){$('#playerlist_' + (i + current_player + 1) + '_rank').html('Plat 1');}
+                    else if (player[(i + current_player)][1] == "D4" ){$('#playerlist_' + (i + current_player + 1) + '_rank').html('Diamond 4');}
+                    else if (player[(i + current_player)][1] == "D3" ){$('#playerlist_' + (i + current_player + 1) + '_rank').html('Diamond 3');}
+                    else if (player[(i + current_player)][1] == "D2" ){$('#playerlist_' + (i + current_player + 1) + '_rank').html('Diamond 2');}
+                    else if (player[(i + current_player)][1] == "D1" ){$('#playerlist_' + (i + current_player + 1) + '_rank').html('Diamond 1');}
+                    else if (player[(i + current_player)][1] == "M" ){$('#playerlist_' + (i + current_player + 1) + '_rank').html('Master');}
+                    else if (player[(i + current_player)][1] == "GM" ){$('#playerlist_' + (i + current_player + 1) + '_rank').html('Grandmaster');}
+                    else if (player[(i + current_player)][1] == "C" ){$('#playerlist_' + (i + current_player + 1) + '_rank').html('Challenger');}
+                        else{console.log('rank assign fail');return; }
+                        if (player[(i + current_player)][2] == "TOP"){$('#playerlist_' + (i + current_player + 1) + '_mainrole').html('TOP');}
+                        else if (player[(i + current_player)][2] == "JNG"){$('#playerlist_' + (i + current_player + 1) + '_mainrole').html('JNG');}
+                        else if (player[(i + current_player)][2] == "MID"){$('#playerlist_' + (i + current_player + 1) + '_mainrole').html('MID');}
+                        else if (player[(i + current_player)][2] == "ADC"){$('#playerlist_' + (i + current_player + 1) + '_mainrole').html('ADC');}
+                        else if (player[(i + current_player)][2] == "SUP"){$('#playerlist_' + (i + current_player + 1) + '_mainrole').html('SUP');}
+                        else{console.log('mainrole assign fail');return; }
+                        if (player[(i + current_player)][3] == "TOP"){$('#playerlist_' + (i + current_player + 1) + '_offrole').html('TOP');}
+                        else if (player[(i + current_player)][3] == "JNG"){$('#playerlist_' + (i + current_player + 1) + '_offrole').html('JNG');}
+                        else if (player[(i + current_player)][3] == "MID"){$('#playerlist_' + (i + current_player + 1) + '_offrole').html('MID');}
+                        else if (player[(i + current_player)][3] == "ADC"){$('#playerlist_' + (i + current_player + 1) + '_offrole').html('ADC');}
+                        else if (player[(i + current_player)][3] == "SUP"){$('#playerlist_' + (i + current_player + 1) + '_offrole').html('SUP');}
+                        else{console.log('offrole assign fail');return; }
+                        $("#playerlist_" + (i + current_player + 1)).css({'transition':'all 0.5s','height':'30px','pointer-events':'all', 'z-index':'1'});
+                        console.log('loop');
+                }
+                player_count = (player_count + players.length);
+                current_player = (current_player + players.length);
+                if (player_count >= 10){
+                            $('#player_count').html(player_count + "/30");
+                            $('#player_count').css({'color':'green'});
+                        } else {
+                            $('#player_count').html(player_count + "/30");
+                            $('#player_count').css({'color':'red'});
+                        }
+                players = [];
+            }
             function reset(){
                 location.reload();
             }
