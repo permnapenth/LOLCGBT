@@ -123,7 +123,7 @@
         <div style="position:absolute;height:2px;width:100px;background-color:orange;margin-top:-862px;margin-left:642px;transform:rotate(45deg);"></div>
         <div style="position:absolute;height:100px;width:1000px;background-color:orange;margin-top:-690px;margin-left:-1710px;"></div>
         <div style="position:absolute;height:100px;width:1000px;background-color:orange;margin-top:-690px;margin-right:-1710px;"></div>
-        <div style="position:absolute;margin-top:-660px;margin-right:-960px;font-family:'Staatliches';font-size:17px;color:#000;font-weight:bold;">Version: 0.3 Beta<br>Made by Burrito Knight (NA) <br> Best viewed in 1920x1080 resolution!</div>
+        <div style="position:absolute;margin-top:-640px;margin-right:-900px;font-family:'Staatliches';font-size:17px;color:#000;font-weight:bold;">Version: 0.3 Beta<br>Made by Burrito Knight (NA)</div>
         <div style="position:absolute;margin-top:-530px;margin-right:-1000px;font-family:'Staatliches';font-size:17px;color:orange;font-weight:bold;">Have any feedback, suggestions, or ideas?<br> Click <a href="https://forms.gle/RMeBg8pJYzK74oLs6" target="_blank">Here</a>! </div>
         <div id="AP" style="position:absolute;margin-top:250px;height:650px;width:710px;border:2px solid orange;display:flex;justify-content:center;align-items:center;user-select:none;">
             <div style="position:absolute;top:25px;height:200px;width:200px;right:-230px;background-color: orange;background-image:url('https://i.imgur.com/rLZZ4Po.png');display:flex;justify-content:center;align-items:center;">
@@ -808,7 +808,7 @@
                         else{};
                     }
                     for (let i = 0; i < player.length; i++) {
-                        if ((player[i][2] == "TOP") && (team_one[0] == "TOP")){team_one[0] = (player[i])}
+                        if      ((player[i][2] == "TOP") && (team_one[0] == "TOP")){team_one[0] = (player[i])}
                         else if ((player[i][2] == "TOP") && (team_two[0] == "TOP") && (((player[i][4]) - (team_one[0][4]) > -strictness) && ((player[i][4]) - (team_one[0][4]) < strictness))){team_two[0] = (player[i])} 
                         else if ((player[i][2] == "JNG") && (team_one[1] == "JNG")){team_one[1] = (player[i])}
                         else if ((player[i][2] == "JNG") && (team_two[1] == "JNG") && (((player[i][4]) - (team_one[1][4]) > -strictness) && ((player[i][4]) - (team_one[0][4]) < strictness))){team_two[1] = (player[i])}
@@ -819,16 +819,16 @@
                         else if ((player[i][2] == "SUP") && (team_one[4] == "SUP")){team_one[4] = (player[i])}
                         else if ((player[i][2] == "SUP") && (team_two[4] == "SUP") && (((player[i][4]) - (team_one[4][4]) > -strictness) && ((player[i][4]) - (team_one[0][4]) < strictness))){team_two[4] = (player[i])}
 
-                        else if ((player[i][3] == "TOP") && (team_one[0] == "TOP")){player[i][4] = (player[i][4]) - (player[i][4] * 0.2); team_one[0] = (player[i])}
-                        else if ((player[i][3] == "TOP") && (team_two[0] == "TOP") && (((player[i][4]) - (team_one[0][4]) > -strictness) && ((player[i][4]) - (team_one[0][4]) < strictness))){player[i][4] = (player[i][4]) - (player[i][4] * 0.2), team_two[0] = (player[i])} 
-                        else if ((player[i][3] == "JNG") && (team_one[1] == "JNG")){player[i][4] = (player[i][4]) - (player[i][4] * 0.2); team_one[1] = (player[i])}
-                        else if ((player[i][3] == "JNG") && (team_two[1] == "JNG") && (((player[i][4]) - (team_one[1][4]) > -strictness) && ((player[i][4]) - (team_one[1][4]) < strictness))){player[i][4] = (player[i][4]) - (player[i][4] * 0.2), team_two[1] = (player[i])}
-                        else if ((player[i][3] == "MID") && (team_one[2] == "MID")){player[i][4] = (player[i][4]) - (player[i][4] * 0.2); team_one[2] = (player[i])}
-                        else if ((player[i][3] == "MID") && (team_two[2] == "MID") && (((player[i][4]) - (team_one[2][4]) > -strictness) && ((player[i][4]) - (team_one[2][4]) < strictness))){player[i][4] = (player[i][4]) - (player[i][4] * 0.2), team_two[2] = (player[i])}
-                        else if ((player[i][3] == "ADC") && (team_one[3] == "ADC")){player[i][4] = (player[i][4]) - (player[i][4] * 0.2); team_one[3] = (player[i])}
-                        else if ((player[i][3] == "ADC") && (team_two[3] == "ADC") && (((player[i][4]) - (team_one[3][4]) > -strictness) && ((player[i][4]) - (team_one[3][4]) < strictness))){player[i][4] = (player[i][4]) - (player[i][4] * 0.2), team_two[3] = (player[i])}
-                        else if ((player[i][3] == "SUP") && (team_one[4] == "SUP")){player[i][4] = (player[i][4]) - (player[i][4] * 0.2); team_one[4] = (player[i])}
-                        else if ((player[i][3] == "SUP") && (team_two[4] == "SUP") && (((player[i][4]) - (team_one[4][4]) > -strictness) && ((player[i][4]) - (team_one[4][4]) < strictness))){player[i][4] = (player[i][4]) - (player[i][4] * 0.2), team_two[4] = (player[i])}
+                        else if ((player[i][3] == "TOP") && (team_one[0] == "TOP")){player[i][4] = ((player[i][4]) - (player[i][4] * 0.2)); team_one[0] = (player[i])}
+                        else if ((player[i][3] == "TOP") && (team_two[0] == "TOP") && (((player[i][4]) - (player[i][4] * 0.2)) - (team_one[0][4]) > -strictness) && (((player[i][4]) - (player[i][4] * 0.2)) - (team_one[0][4]) < strictness)){player[i][4] = ((player[i][4]) - (player[i][4] * 0.2)); team_two[0] = (player[i])} 
+                        else if ((player[i][3] == "JNG") && (team_one[1] == "JNG")){player[i][4] = ((player[i][4]) - (player[i][4] * 0.2)); team_one[1] = (player[i])}
+                        else if ((player[i][3] == "JNG") && (team_two[1] == "JNG") && (((player[i][4]) - (player[i][4] * 0.2)) - (team_one[1][4]) > -strictness) && (((player[i][4]) - (player[i][4] * 0.2)) - (team_one[1][4]) < strictness)){player[i][4] = ((player[i][4]) - (player[i][4] * 0.2)); team_two[1] = (player[i])}
+                        else if ((player[i][3] == "MID") && (team_one[2] == "MID")){player[i][4] = ((player[i][4]) - (player[i][4] * 0.2)); team_one[2] = (player[i])}
+                        else if ((player[i][3] == "MID") && (team_two[2] == "MID") && (((player[i][4]) - (player[i][4] * 0.2)) - (team_one[2][4]) > -strictness) && (((player[i][4]) - (player[i][4] * 0.2)) - (team_one[2][4]) < strictness)){player[i][4] = ((player[i][4]) - (player[i][4] * 0.2)); team_two[2] = (player[i])}
+                        else if ((player[i][3] == "ADC") && (team_one[3] == "ADC")){player[i][4] = ((player[i][4]) - (player[i][4] * 0.2)); team_one[3] = (player[i])}
+                        else if ((player[i][3] == "ADC") && (team_two[3] == "ADC") && (((player[i][4]) - (player[i][4] * 0.2)) - (team_one[3][4]) > -strictness) && (((player[i][4]) - (player[i][4] * 0.2)) - (team_one[3][4]) < strictness)){player[i][4] = ((player[i][4]) - (player[i][4] * 0.2)); team_two[3] = (player[i])}
+                        else if ((player[i][3] == "SUP") && (team_one[4] == "SUP")){player[i][4] = ((player[i][4]) - (player[i][4] * 0.2)); team_one[4] = (player[i])}
+                        else if ((player[i][3] == "SUP") && (team_two[4] == "SUP") && (((player[i][4]) - (player[i][4] * 0.2)) - (team_one[4][4]) > -strictness) && (((player[i][4]) - (player[i][4] * 0.2)) - (team_one[4][4]) < strictness)){player[i][4] = ((player[i][4]) - (player[i][4] * 0.2)); team_two[4] = (player[i])}
                         
                         else if ((player[i][2] != "SUP") && (player[i][3] != "SUP") && (team_one[0] == "SUP")){player[i][4] = (player[i][4]) - (player[i][4] * 0.5); team_one[4] = (player[i])}
                         else if ((player[i][2] != "SUP") && (player[i][3] != "SUP") && (team_two[0] == "SUP") && (((player[i][4]) - (player[i][4] * 0.5)) - (team_one[4][4]) > -strictness) && (((player[i][4]) - (player[i][4] * 0.5)) - (team_one[4][4]) < strictness)){player[i][4] = (player[i][4]) - (player[i][4] * 0.5), team_two[4] = (player[i])}
